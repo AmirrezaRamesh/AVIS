@@ -77,6 +77,7 @@ private:
     rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_distance_;
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
 
+    //1500 means nothing has been detected
     float left_sensor_ = 1500, middle_sensor_=1500, right_sensor_=1500;
     bool distance_received_ = false;
 };
