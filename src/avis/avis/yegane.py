@@ -114,20 +114,22 @@ class LaneDetector:
         ]
 
         d_center = np.polyder(center_fit)
-        center_y = ploty[-10:]
+        center_y = ploty[-20:]
 
-        distance, w, degree = 0, 10, 0
-        last_10 = center_fitx[-10:]
+        distance, w1, w2, degree = 0, 20, 20, 0
+        last_20 = center_fitx[-20:]
 
-        for i in range(10):
-            d = last_10[i]
-            distance += (w * (d - (width // 2))) / 55
-            w -= 1
+        for i in range(20):
+            d = last_20[i]
+            distance += (w1 * (d - (width // 2)))/210
+            w1 -= 1
+
 
             y = center_y[i]
             m_center = np.polyval(d_center, y)
-            theta = np.degrees(np.arctan(m_center))
-            degree += theta / 10
+            theta = (np.degrees(np.arctan(m_center))*w2)/210
+            degree += theta
+            w2 -= 1
 
         out_img[lefty, leftx] = [255, 0, 0]
         out_img[righty, rightx] = [0, 0, 255]
@@ -147,8 +149,8 @@ class LaneDetector:
 
         width, height = frame.shape[1], frame.shape[0]
 
-        src_points = np.array([[200, 130], [340, 130], [450, 200], [100, 200]], dtype="float32")
-        dst_points = np.array([[50, 50], [300, 50], [300, 150], [50, 150]], dtype="float32")
+        src_points = np.array([[160, 170], [400, 170], [500, 230], [50, 230]], dtype="float32")
+        dst_points = np.array([[50, 100], [450, 100], [450, 300], [50, 300]], dtype="float32")
 
         matrix = cv2.getPerspectiveTransform(src_points, dst_points)
         warped = cv2.warpPerspective(frame, matrix, (width, height))
@@ -172,7 +174,7 @@ class LaneDetector:
         for pt in src_points.astype(int):
             cv2.circle(result, tuple(pt), 3, color=(0, 0, 255), thickness=-1)
 
-        #cv2.imshow("road", road_on_warped)
+        cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
         #cv2.imshow("out_img", road)
         return road, distance, degree

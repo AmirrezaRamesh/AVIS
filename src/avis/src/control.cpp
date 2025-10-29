@@ -11,7 +11,7 @@ class ControlNode : public rclcpp::Node
 public:
     ControlNode() : 
     Node("control_node"),
-    stan(1.0, 0.8, 0.0, 30)  
+    stan(0.5, 0.8, 0.005, 35)  
     {
 
         subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
@@ -70,7 +70,7 @@ private:
     void controller(float angle, float offset)
     {
         // constant speed  version
-        float speed = 10.0;
+        float speed = 30.0;
         float steering = stan.calculate_steer(offset, angle, speed);
         
         // RCLCPP_INFO(this->get_logger(), "data is %f", steering);
