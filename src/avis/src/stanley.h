@@ -4,8 +4,9 @@
 class Stanley
 {
 private:
-    float stanley_gain_k;
-    float stanley_gain_ks;
+    float gain_d;
+    float gain_steer;
+    float gain_ks;
 
     float offset;
 
@@ -13,7 +14,7 @@ private:
     float limit;
 
 public:
-    Stanley(const float &k,const float &ks,const float &limit);
+    Stanley(const float &s, const float &d, const float &ks, const float &limit);
 
     float radToDegree(const float &rad);
     float degreeToRad(const float &degree);

@@ -32,8 +32,8 @@ public:
 
         // ######## controller ########
 
-        // (k , ks)
-        Stanley stan(1.0, 0.0);
+        // (steer , distance , ks)
+        Stanley stan(1.0 0.8, 0.0);
 
         // ######## controller ########
     }

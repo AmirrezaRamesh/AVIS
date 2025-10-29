@@ -14,10 +14,11 @@ float Stanley::degreeToRad(const float &degree)
     return degree * pi / 180;
 }
 // publics
-Stanley::Stanley(const float &k, const float &ks, const float &limit)
+Stanley::Stanley(const float &s, const float &d, const float &ks, const float &limit)
 {
-    this->stanley_gain_k = k;
-    this->stanley_gain_ks = ks;
+    this->gain_d = d;
+    this->gain_steer = s;
+    this->gain_ks = ks;
 
     pi = M_PI;
 
@@ -36,5 +37,5 @@ float Stanley::set_limits(const float &input)
 float Stanley::calculate_steer(const float &offset, const float &heading_error, const float &velocity)
 {
     // degrees based on radian
-    return set_limits(heading_error + atan2(offset * stanley_gain_k, stanley_gain_ks + velocity));
+    return set_limits((gain_steer*heading_error) + atan2(offset * gain_d, gain_ks + velocity));
 }
