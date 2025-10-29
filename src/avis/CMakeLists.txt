@@ -16,7 +16,10 @@ include_directories(include)
 
 
 
-add_executable(control src/control.cpp)
+add_executable(control 
+              src/control.cpp
+              src/stanley.cpp)
+              
 ament_target_dependencies(control rclcpp std_msgs)
 
 install(TARGETS
