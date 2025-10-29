@@ -8,8 +8,7 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge
 from avis import avisengine, config
-
-
+ 
 class CarPublisher(Node):
     def __init__(self):
         super().__init__('car_publisher_node')
@@ -33,11 +32,13 @@ class CarPublisher(Node):
 
         self.get_logger().info('CarPublisher Node Started.')
 
-        self.timer = self.create_timer(0.1, self.update)
+        self.timer = self.create_timer(0.05, self.update)
 
     def actuate_callback(self, msg: Float32MultiArray):
         if len(msg.data) >= 2:
             self.speed, self.steering = msg.data[:2]
+            self.car.setSpeed(self.speed)
+            self.car.setSteering(self.steering)
         else:
             self.get_logger().warn('Received actuate data with less than 2 elements')
 
@@ -60,8 +61,6 @@ class CarPublisher(Node):
                 image_msg = self.bridge.cv2_to_imgmsg(resized, encoding='bgr8')
                 self.camera_pub.publish(image_msg)
 
-            self.car.setSpeed(self.speed)
-            self.car.setSteering(self.steering)
 
         except BrokenPipeError:
             self.get_logger().error("Broken pipe: simulator not ready or connection lost")
@@ -69,9 +68,8 @@ class CarPublisher(Node):
             self.get_logger().error(f"Error in update loop: {e}")
             return
 
-        # Log frequency (optional: lower rate to reduce spam)
         f = 1.0 / max(1e-6, (time.time() - t1))
-        self.get_logger().debug(f'Update frequency: {f:.2f} Hz')
+        self.get_logger().info(f'Update frequency: {f:.2f} Hz')
 
     def stop_car(self):
         try:
@@ -93,7 +91,6 @@ def main(args=None):
         node.destroy_node()
         rclpy.shutdown()
         cv2.destroyAllWindows()
-
 
 if __name__ == '__main__':
     main()
