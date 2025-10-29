@@ -32,7 +32,7 @@ class CarPublisher(Node):
 
         self.get_logger().info('CarPublisher Node Started.')
 
-        self.timer = self.create_timer(0.033, self.update)
+        self.timer = self.create_timer(0.05, self.update)
 
     def actuate_callback(self, msg: Float32MultiArray):
         if len(msg.data) >= 2:
@@ -60,7 +60,6 @@ class CarPublisher(Node):
                 image_msg = self.bridge.cv2_to_imgmsg(resized, encoding='bgr8')
                 self.camera_pub.publish(image_msg)
 
-
         except BrokenPipeError:
             self.get_logger().error("Broken pipe: simulator not ready or connection lost")
         except Exception as e:
@@ -76,7 +75,6 @@ class CarPublisher(Node):
         except Exception:
             pass
         self.get_logger().info('Car stopped and node shutting down.')
-
 
 def main(args=None):
     rclpy.init(args=args)
