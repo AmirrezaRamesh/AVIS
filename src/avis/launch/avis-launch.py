@@ -17,7 +17,7 @@ def generate_launch_description():
                 package='avis',
                 executable='line.py',
                 name='line',
-                output='screen'
+                output='log'
             )]
         ),
 
@@ -27,17 +27,8 @@ def generate_launch_description():
                 package='avis',
                 executable='control',
                 name='control',
-                output='screen'
+                output='log'
             )]
         ),
 
-        # TimerAction(
-        #     period=4.0,
-        #     actions=[Node(
-        #         package='avis',
-        #         executable='actuate.py',
-        #         name='actuate',
-        #         output='screen'
-        #     )]
-        # ),
     ])
