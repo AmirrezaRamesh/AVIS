@@ -70,7 +70,7 @@ class CarPublisher(Node):
         self.steering = msg.data[1]
 
     def update(self):
-        """Main loop: publish sensors and camera, and apply actuate commands."""
+        t1 = time.time()
         try:
             self.car.getData()
             sensors = self.car.getSensors()  # [Left, Middle, Right]
@@ -84,6 +84,7 @@ class CarPublisher(Node):
 
             # Publish camera image
             if image is not None and image.any():
+                image = cv2.resize(image, (1280, 720))
                 image_msg = self.bridge.cv2_to_imgmsg(image, encoding='bgr8')
                 self.camera_pub.publish(image_msg)
 
@@ -96,6 +97,9 @@ class CarPublisher(Node):
 
         except Exception as e:
             self.get_logger().error(f"Error in update loop: {e}")
+        #frequncy
+        f = 1/(time.time() - t1)
+        print(f)
 
     def stop_car(self):
         """Stop the car safely."""
