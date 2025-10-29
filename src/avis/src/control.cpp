@@ -56,7 +56,6 @@ private:
     //     distance_received_ = true; 
     // }
 
-
     void controller(float angle, float offset){
         std::cout<<"shayan its your turn";
         

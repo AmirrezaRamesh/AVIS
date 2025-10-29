@@ -137,26 +137,23 @@ class LaneDetector:
         cv2.polylines(road, [np.int32(np.column_stack((right_fitx, ploty)))], False, (0, 0, 255), 5)
         cv2.polylines(road, [np.int32(np.column_stack((center_fitx, ploty)))], False, (0, 255, 0), 5)
 
-        cv2.imshow("windows", out_img)
+        #cv2.imshow("windows", out_img)
 
         return road, distance, -degree
 
     def process_frame(self, frame):
         frame = cv2.resize(frame, (500, 300))
-        cv2.imshow("original", frame)
+        #cv2.imshow("original", frame)
 
         width, height = frame.shape[1], frame.shape[0]
 
-        src_points = np.array([[140, 70], [200, 70], [250, 130], [70, 130]], dtype="float32")
+        src_points = np.array([[200, 130], [340, 130], [450, 200], [100, 200]], dtype="float32")
         dst_points = np.array([[50, 50], [300, 50], [300, 150], [50, 150]], dtype="float32")
 
         matrix = cv2.getPerspectiveTransform(src_points, dst_points)
         warped = cv2.warpPerspective(frame, matrix, (width, height))
 
-        for pt in src_points.astype(int):
-            cv2.circle(frame, tuple(pt), 3, color=(0, 0, 255), thickness=-1)
-
-        cv2.imshow("frame", frame)
+        #cv2.imshow("frame", frame)
 
         clean_line = self.line_detection(warped)
         road, distance, degree = self.fit_polynomial(clean_line)
@@ -171,9 +168,14 @@ class LaneDetector:
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
         cv2.putText(result, f"Degree : {round(degree, 2)}", (10, 40),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+        
+        for pt in src_points.astype(int):
+            cv2.circle(result, tuple(pt), 3, color=(0, 0, 255), thickness=-1)
 
-        cv2.imshow("road", road_on_warped)
+
+        #cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
-        cv2.imshow("out_img", road)
+        #cv2.imshow("out_img", road)
+        return road, distance, degree
 
 

@@ -39,8 +39,9 @@ class LineNode(Node):
     def process_image(self, image):
 
         try:
-            road, distance, degree = self.lane_detector.fit_polynomial(
-                self.lane_detector.line_detection(image)
+
+            road, distance, degree = self.lane_detector.process_frame(
+                image
             )
 
             cv2.imshow("Detected Lanes", road)
