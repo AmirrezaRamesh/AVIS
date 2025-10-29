@@ -37,5 +37,5 @@ float Stanley::set_limits(const float &input)
 float Stanley::calculate_steer(const float &offset, const float &heading_error, const float &velocity)
 {
     // degrees based on radian
-    return set_limits((gain_steer*heading_error) + atan2(offset * gain_d, gain_ks + velocity));
+    return set_limits((gain_steer * heading_error) + atan2(offset * gain_d, gain_ks + velocity));
 }
