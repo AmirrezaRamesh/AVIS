@@ -32,7 +32,7 @@ class CarPublisher(Node):
 
         self.get_logger().info('CarPublisher Node Started.')
 
-        self.timer = self.create_timer(0.05, self.update)
+        self.timer = self.create_timer(0.033, self.update)
 
     def actuate_callback(self, msg: Float32MultiArray):
         if len(msg.data) >= 2:
@@ -46,7 +46,6 @@ class CarPublisher(Node):
         t1 = time.time()
 
         try:
-
             self.car.getData()
             # sensors = self.car.getSensors()  # [Left, Middle, Right]
             # self.car.setSensorAngle(40)

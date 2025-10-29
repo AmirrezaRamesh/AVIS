@@ -7,7 +7,7 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge
 import cv2
-
+import time
 
 class LineNode(Node):
     def __init__(self):
@@ -37,12 +37,10 @@ class LineNode(Node):
         self.get_logger().info(f'Published line: [angle={angle:.2f}, offset={offset:.2f}]')
 
     def process_image(self, image):
-
+        t1 = time.time()
         try:
 
-            road, distance, degree = self.lane_detector.process_frame(
-                image
-            )
+            road, distance, degree = self.lane_detector.process_frame(image)
 
             cv2.imshow("Detected Lanes", road)
             cv2.waitKey(1)
@@ -55,6 +53,9 @@ class LineNode(Node):
             msg = Float32MultiArray()
             msg.data = [0.0, 0.0]
             self.line_pub.publish(msg)
+        f = 1/(time.time() - t1)
+        self.get_logger().info(f'Update frequency: {f:.2f} Hz')
+
 
 
 def main(args=None):

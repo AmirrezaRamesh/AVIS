@@ -172,7 +172,6 @@ class LaneDetector:
         for pt in src_points.astype(int):
             cv2.circle(result, tuple(pt), 3, color=(0, 0, 255), thickness=-1)
 
-
         #cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
         #cv2.imshow("out_img", road)
