@@ -2,7 +2,6 @@
 
 from avis import avisengine
 from avis import config
-from avis import utils
 
 import time
 import cv2

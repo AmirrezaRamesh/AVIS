@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from avis.yegane import LaneDetector
 
 import rclpy
 from rclpy.node import Node
@@ -6,8 +7,6 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge
 import cv2
-
-from avis.yegane import LaneDetector
 
 
 class LineNode(Node):
@@ -44,16 +43,14 @@ class LineNode(Node):
                 self.lane_detector.line_detection(image)
             )
 
-            # Show the result (optional — useful for debugging)
             cv2.imshow("Detected Lanes", road)
             cv2.waitKey(1)
 
-            # Publish lane data
             self.publish_line(degree, distance)
 
         except Exception as e:
             self.get_logger().error(f"Lane detection failed: {e}")
-            # Publish zeros if something goes wrong
+
             msg = Float32MultiArray()
             msg.data = [0.0, 0.0]
             self.line_pub.publish(msg)
