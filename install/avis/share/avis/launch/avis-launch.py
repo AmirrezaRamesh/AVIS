@@ -1,1 +1,0 @@
-/home/amir/AVIS/src/avis/launch/avis-launch.py

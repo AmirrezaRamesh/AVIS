@@ -1,0 +1,7 @@
+# ROS2 workspace build directories
+build/
+install/
+log/
+
+.vscode/
+.idea/

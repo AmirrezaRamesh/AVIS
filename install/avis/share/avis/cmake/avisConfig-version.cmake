@@ -1,1 +1,0 @@
-/home/amir/AVIS/build/avis/ament_cmake_core/avisConfig-version.cmake

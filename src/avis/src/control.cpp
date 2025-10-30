@@ -10,7 +10,7 @@ class ControlNode : public rclcpp::Node
 {
 public:
     ControlNode() : Node("control_node"),
-                    stan(0.8, 0.5, 0.0, 40, 20)
+                    stan(0.35, 0.2, 0.0, 40, 20)
                     // pid(1, 0, 0, 30)
     {
 
@@ -69,7 +69,7 @@ private:
     void controller(float angle, float offset)
     {
         // constant speed  version
-        float speed = 40.0;
+        float speed = 45.0;
         float steering = stan.calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);
 

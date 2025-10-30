@@ -1,1 +1,0 @@
-/home/amir/AVIS/src/avis/avis/yegane.py
