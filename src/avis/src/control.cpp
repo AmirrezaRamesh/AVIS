@@ -9,9 +9,9 @@ using namespace std;
 class ControlNode : public rclcpp::Node
 {
 public:
-    ControlNode() : 
-    Node("control_node"),
-    stan(0.5, 0.8, 0.005, 35)  
+    ControlNode() : Node("control_node"),
+                    stan(0.5, 0.8, 0.005, 35, -1),
+                    pid(1, 0, 0, 30)
     {
 
         subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
@@ -32,7 +32,6 @@ public:
         RCLCPP_INFO(this->get_logger(), "Control Node Started");
 
         // ######## controller ########
-            
 
         // ######## controller ########
     }
@@ -72,7 +71,8 @@ private:
         // constant speed  version
         float speed = 30.0;
         float steering = stan.calculate_steer(offset, angle, speed);
-        
+        // float steering = pid.get_pid(angle, 0.02);
+
         // RCLCPP_INFO(this->get_logger(), "data is %f", steering);
 
         std_msgs::msg::Float32MultiArray msg;
@@ -86,6 +86,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
 
     Stanley stan;
+    PID pid;
 
     // 1500 means nothing has been detected
     //  float left_sensor_ = 1500, middle_sensor_=1500, right_sensor_=1500;
