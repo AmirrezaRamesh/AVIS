@@ -1,6 +1,5 @@
 #include "stanley.h"
 
-using namespace std;
 // private
 float Stanley::radToDegree(const float &rad)
 {

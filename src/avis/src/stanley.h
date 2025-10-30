@@ -1,5 +1,6 @@
 #ifndef STANLEY
 #define STANLEY
+
 #include <deque>
 #include <iostream>
 #include <cmath>
