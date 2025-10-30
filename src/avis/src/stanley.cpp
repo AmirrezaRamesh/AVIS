@@ -55,10 +55,10 @@ void Stanley::change_handler(float &error)
 
 float Stanley::calculate_steer(const float &offset, float &heading_error, const float &velocity)
 {
-    float angle_error = heading_error;
+    float best_angle_error = heading_error;
 
-    change_handler(angle_error);
-    prev_error = heading_error;
+    change_handler(best_angle_error);
+    prev_error = best_angle_error;
     // degrees based on radian
-    return set_limits((gain_steer * angle_error) + atan2(offset * gain_d, gain_ks + velocity));
+    return set_limits((gain_steer * best_angle_error) + atan2(offset * gain_d, gain_ks + velocity));
 }
