@@ -8,7 +8,9 @@ def generate_launch_description():
             package='avis',
             executable='simulator.py',
             name='simulator',
-            output='screen'
+            output='screen',
+            respawn=True,
+            respawn_delay=2.0
         ),
 
         TimerAction(
@@ -17,7 +19,9 @@ def generate_launch_description():
                 package='avis',
                 executable='line.py',
                 name='line',
-                output='log'
+                output='log',
+                respawn=True,
+                respawn_delay=2.0
             )]
         ),
 
@@ -27,8 +31,9 @@ def generate_launch_description():
                 package='avis',
                 executable='control',
                 name='control',
-                output='log'
+                output='log',
+                respawn=True,
+                respawn_delay=2.0
             )]
         ),
-
     ])
