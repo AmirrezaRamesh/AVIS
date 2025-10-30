@@ -1,0 +1,12 @@
+/home/amir/AVIS/build/avis/CMakeFiles/uninstall.dir
+/home/amir/AVIS/build/avis/CMakeFiles/avis_uninstall.dir
+/home/amir/AVIS/build/avis/CMakeFiles/control.dir
+/home/amir/AVIS/build/avis/CMakeFiles/ament_cmake_python_symlink_avis.dir
+/home/amir/AVIS/build/avis/CMakeFiles/ament_cmake_python_build_avis_egg.dir
+/home/amir/AVIS/build/avis/CMakeFiles/test.dir
+/home/amir/AVIS/build/avis/CMakeFiles/edit_cache.dir
+/home/amir/AVIS/build/avis/CMakeFiles/rebuild_cache.dir
+/home/amir/AVIS/build/avis/CMakeFiles/list_install_components.dir
+/home/amir/AVIS/build/avis/CMakeFiles/install.dir
+/home/amir/AVIS/build/avis/CMakeFiles/install/local.dir
+/home/amir/AVIS/build/avis/CMakeFiles/install/strip.dir

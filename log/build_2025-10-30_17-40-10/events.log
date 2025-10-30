@@ -1,0 +1,175 @@
+[0.000000] (-) TimerEvent: {}
+[0.000630] (avis) JobQueued: {'identifier': 'avis', 'dependencies': OrderedDict()}
+[0.001509] (avis) JobStarted: {'identifier': 'avis'}
+[0.018245] (avis) JobProgress: {'identifier': 'avis', 'progress': 'cmake'}
+[0.020151] (avis) Command: {'cmd': ['/usr/bin/cmake', '/home/amir/AVIS/src/avis', '-DCMAKE_INSTALL_PREFIX=/home/amir/AVIS/install/avis'], 'cwd': '/home/amir/AVIS/build/avis', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,7945,0'), ('LANGUAGE', 'en_US:en'), ('USER', 'amir'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/amir'), ('OLDPWD', '/home/amir'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('SYSTEMD_EXEC_PID', '2452'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/amir/AVIS/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'amir'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'amir'), ('TERM', 'screen'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/amir/.local/bin:/opt/ros/humble/bin:/home/amir/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/amirux:@/tmp/.ICE-unix/2419,unix/amirux:/tmp/.ICE-unix/2419'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/16b608b3_9bc8_4d98_bb28_cfc657055af2'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.7T6OF3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.104'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/amir/AVIS/build/avis'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/amir/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble')]), 'shell': False}
+[0.050870] (avis) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099541] (-) TimerEvent: {}
+[0.199984] (-) TimerEvent: {}
+[0.300435] (-) TimerEvent: {}
+[0.322734] (avis) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.339656] (avis) StdoutLine: {'line': b'-- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.398500] (avis) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.400576] (-) TimerEvent: {}
+[0.403529] (avis) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.416903] (avis) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.437153] (avis) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.462479] (avis) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.500718] (-) TimerEvent: {}
+[0.541530] (avis) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.544596] (avis) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.600865] (-) TimerEvent: {}
+[0.701287] (-) TimerEvent: {}
+[0.773038] (avis) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.801383] (-) TimerEvent: {}
+[0.872305] (avis) StdoutLine: {'line': b'-- Found rclpy: 3.3.16 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[0.901500] (-) TimerEvent: {}
+[1.001885] (-) TimerEvent: {}
+[1.102398] (-) TimerEvent: {}
+[1.195877] (avis) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.202534] (-) TimerEvent: {}
+[1.213084] (avis) StdoutLine: {'line': b'-- Generating done\n'}
+[1.220290] (avis) StdoutLine: {'line': b'-- Build files have been written to: /home/amir/AVIS/build/avis\n'}
+[1.234304] (avis) CommandEnded: {'returncode': 0}
+[1.236890] (avis) JobProgress: {'identifier': 'avis', 'progress': 'build'}
+[1.239438] (avis) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/amir/AVIS/build/avis', '--', '-j8', '-l8'], 'cwd': '/home/amir/AVIS/build/avis', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,7945,0'), ('LANGUAGE', 'en_US:en'), ('USER', 'amir'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/amir'), ('OLDPWD', '/home/amir'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('SYSTEMD_EXEC_PID', '2452'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/amir/AVIS/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'amir'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'amir'), ('TERM', 'screen'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/amir/.local/bin:/opt/ros/humble/bin:/home/amir/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/amirux:@/tmp/.ICE-unix/2419,unix/amirux:/tmp/.ICE-unix/2419'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/16b608b3_9bc8_4d98_bb28_cfc657055af2'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.7T6OF3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.104'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/amir/AVIS/build/avis'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/amir/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble')]), 'shell': False}
+[1.302683] (-) TimerEvent: {}
+[1.310597] (avis) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target control\x1b[0m\n'}
+[1.339182] (avis) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_avis\n'}
+[1.348825] (avis) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/control.dir/src/control.cpp.o\x1b[0m\n'}
+[1.402850] (-) TimerEvent: {}
+[1.503435] (-) TimerEvent: {}
+[1.604145] (-) TimerEvent: {}
+[1.704616] (-) TimerEvent: {}
+[1.805136] (-) TimerEvent: {}
+[1.905711] (-) TimerEvent: {}
+[1.943979] (avis) StdoutLine: {'line': b'running egg_info\n'}
+[1.945360] (avis) StdoutLine: {'line': b'writing avis.egg-info/PKG-INFO\n'}
+[1.945720] (avis) StdoutLine: {'line': b'writing dependency_links to avis.egg-info/dependency_links.txt\n'}
+[1.946009] (avis) StdoutLine: {'line': b'writing top-level names to avis.egg-info/top_level.txt\n'}
+[1.950896] (avis) StdoutLine: {'line': b"reading manifest file 'avis.egg-info/SOURCES.txt'\n"}
+[1.951859] (avis) StdoutLine: {'line': b"writing manifest file 'avis.egg-info/SOURCES.txt'\n"}
+[2.005872] (-) TimerEvent: {}
+[2.012207] (avis) StdoutLine: {'line': b'[ 33%] Built target ament_cmake_python_build_avis_egg\n'}
+[2.106030] (-) TimerEvent: {}
+[2.206610] (-) TimerEvent: {}
+[2.307053] (-) TimerEvent: {}
+[2.407488] (-) TimerEvent: {}
+[2.507941] (-) TimerEvent: {}
+[2.608373] (-) TimerEvent: {}
+[2.708912] (-) TimerEvent: {}
+[2.809624] (-) TimerEvent: {}
+[2.910029] (-) TimerEvent: {}
+[3.010586] (-) TimerEvent: {}
+[3.111032] (-) TimerEvent: {}
+[3.211446] (-) TimerEvent: {}
+[3.311850] (-) TimerEvent: {}
+[3.412300] (-) TimerEvent: {}
+[3.514311] (-) TimerEvent: {}
+[3.614887] (-) TimerEvent: {}
+[3.716014] (-) TimerEvent: {}
+[3.816490] (-) TimerEvent: {}
+[3.917055] (-) TimerEvent: {}
+[4.017543] (-) TimerEvent: {}
+[4.118125] (-) TimerEvent: {}
+[4.218723] (-) TimerEvent: {}
+[4.319136] (-) TimerEvent: {}
+[4.419573] (-) TimerEvent: {}
+[4.520261] (-) TimerEvent: {}
+[4.620687] (-) TimerEvent: {}
+[4.721083] (-) TimerEvent: {}
+[4.821522] (-) TimerEvent: {}
+[4.921950] (-) TimerEvent: {}
+[5.022515] (-) TimerEvent: {}
+[5.123062] (-) TimerEvent: {}
+[5.223549] (-) TimerEvent: {}
+[5.324157] (-) TimerEvent: {}
+[5.424644] (-) TimerEvent: {}
+[5.525210] (-) TimerEvent: {}
+[5.625625] (-) TimerEvent: {}
+[5.726157] (-) TimerEvent: {}
+[5.826609] (-) TimerEvent: {}
+[5.927225] (-) TimerEvent: {}
+[6.027750] (-) TimerEvent: {}
+[6.128280] (-) TimerEvent: {}
+[6.228870] (-) TimerEvent: {}
+[6.329322] (-) TimerEvent: {}
+[6.430150] (-) TimerEvent: {}
+[6.530569] (-) TimerEvent: {}
+[6.580328] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/control.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KControlNode::ControlNode()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.580804] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/control.cpp:13:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KPID::PID()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.581030] (avis) StderrLine: {'line': b'   13 |                     stan(0.8, 0.0, 0.0, 40, 20\x1b[01;31m\x1b[K)\x1b[m\x1b[K\n'}
+[6.581238] (avis) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[6.581416] (avis) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/control.cpp:4\x1b[m\x1b[K:\n'}
+[6.581585] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.cpp:3:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[KPID::PID(const float&, const float&, const float&, const float&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.581732] (avis) StderrLine: {'line': b'    3 | \x1b[01;36m\x1b[KPID\x1b[m\x1b[K::PID(const float &kp, const float &ki, const float &kd, const float &constrain)\n'}
+[6.581841] (avis) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[6.599138] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.cpp:3:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 4 arguments, 0 provided\n'}
+[6.599611] (avis) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.cpp:1\x1b[m\x1b[K,\n'}
+[6.599796] (avis) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/control.cpp:4\x1b[m\x1b[K:\n'}
+[6.599989] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.h:4:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr PID::PID(const PID&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.600221] (avis) StderrLine: {'line': b'    4 | class \x1b[01;36m\x1b[KPID\x1b[m\x1b[K\n'}
+[6.600434] (avis) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[6.600623] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.h:4:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[6.600810] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.h:4:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kconstexpr PID::PID(PID&&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.600995] (avis) StderrLine: {'line': b'\x1b[01m\x1b[K/home/amir/AVIS/src/avis/src/pid.h:4:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[6.630800] (-) TimerEvent: {}
+[6.731239] (-) TimerEvent: {}
+[6.831678] (-) TimerEvent: {}
+[6.932228] (-) TimerEvent: {}
+[7.032747] (-) TimerEvent: {}
+[7.133333] (-) TimerEvent: {}
+[7.233940] (-) TimerEvent: {}
+[7.334553] (-) TimerEvent: {}
+[7.435239] (-) TimerEvent: {}
+[7.535846] (-) TimerEvent: {}
+[7.636549] (-) TimerEvent: {}
+[7.737097] (-) TimerEvent: {}
+[7.837625] (-) TimerEvent: {}
+[7.938061] (-) TimerEvent: {}
+[8.038607] (-) TimerEvent: {}
+[8.139378] (-) TimerEvent: {}
+[8.240009] (-) TimerEvent: {}
+[8.340748] (-) TimerEvent: {}
+[8.441328] (-) TimerEvent: {}
+[8.541881] (-) TimerEvent: {}
+[8.642448] (-) TimerEvent: {}
+[8.743025] (-) TimerEvent: {}
+[8.843757] (-) TimerEvent: {}
+[8.944439] (-) TimerEvent: {}
+[9.045055] (-) TimerEvent: {}
+[9.145665] (-) TimerEvent: {}
+[9.246238] (-) TimerEvent: {}
+[9.346805] (-) TimerEvent: {}
+[9.447392] (-) TimerEvent: {}
+[9.547970] (-) TimerEvent: {}
+[9.648541] (-) TimerEvent: {}
+[9.749092] (-) TimerEvent: {}
+[9.849577] (-) TimerEvent: {}
+[9.950147] (-) TimerEvent: {}
+[10.050753] (-) TimerEvent: {}
+[10.151232] (-) TimerEvent: {}
+[10.251693] (-) TimerEvent: {}
+[10.352223] (-) TimerEvent: {}
+[10.452684] (-) TimerEvent: {}
+[10.553257] (-) TimerEvent: {}
+[10.653791] (-) TimerEvent: {}
+[10.754396] (-) TimerEvent: {}
+[10.854867] (-) TimerEvent: {}
+[10.955361] (-) TimerEvent: {}
+[11.055920] (-) TimerEvent: {}
+[11.156361] (-) TimerEvent: {}
+[11.256848] (-) TimerEvent: {}
+[11.357348] (-) TimerEvent: {}
+[11.457835] (-) TimerEvent: {}
+[11.558369] (-) TimerEvent: {}
+[11.658901] (-) TimerEvent: {}
+[11.759463] (-) TimerEvent: {}
+[11.859912] (-) TimerEvent: {}
+[11.944281] (avis) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/control.dir/build.make:76: CMakeFiles/control.dir/src/control.cpp.o] Error 1\n'}
+[11.944686] (avis) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/control.dir/all] Error 2\n'}
+[11.945117] (avis) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[11.950588] (avis) CommandEnded: {'returncode': 2}
+[11.960046] (-) TimerEvent: {}
+[11.982177] (avis) JobEnded: {'identifier': 'avis', 'rc': 2}
+[11.993019] (-) EventReactorShutdown: {}

@@ -1,0 +1,4 @@
+Invoking command in '/home/amir/AVIS/build/avis': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/amir/AVIS/build/avis -- -j8 -l8
+Invoked command in '/home/amir/AVIS/build/avis' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/amir/AVIS/build/avis -- -j8 -l8
+Invoking command in '/home/amir/AVIS/build/avis': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/amir/AVIS/build/avis
+Invoked command in '/home/amir/AVIS/build/avis' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/amir/AVIS/build/avis

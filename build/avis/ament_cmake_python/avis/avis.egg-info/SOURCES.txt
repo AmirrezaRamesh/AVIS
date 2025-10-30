@@ -1,0 +1,10 @@
+setup.py
+avis/__init__.py
+avis/avisengine.py
+avis/config.py
+avis/utils.py
+avis/yegane.py
+avis.egg-info/PKG-INFO
+avis.egg-info/SOURCES.txt
+avis.egg-info/dependency_links.txt
+avis.egg-info/top_level.txt

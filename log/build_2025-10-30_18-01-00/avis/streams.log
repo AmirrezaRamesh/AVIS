@@ -1,0 +1,48 @@
+[0.026s] Invoking command in '/home/amir/AVIS/build/avis': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/amir/AVIS/build/avis -- -j8 -l8
+[0.128s] [ 33%] [32mBuilding CXX object CMakeFiles/control.dir/src/control.cpp.o[0m
+[0.133s] [ 33%] Built target ament_cmake_python_symlink_avis
+[0.750s] running egg_info
+[0.753s] writing avis.egg-info/PKG-INFO
+[0.753s] writing dependency_links to avis.egg-info/dependency_links.txt
+[0.754s] writing top-level names to avis.egg-info/top_level.txt
+[0.762s] reading manifest file 'avis.egg-info/SOURCES.txt'
+[0.764s] writing manifest file 'avis.egg-info/SOURCES.txt'
+[0.817s] [ 33%] Built target ament_cmake_python_build_avis_egg
+[18.592s] [ 66%] [32m[1mLinking CXX executable control[0m
+[19.576s] [100%] Built target control
+[19.602s] Invoked command in '/home/amir/AVIS/build/avis' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/amir/AVIS/build/avis -- -j8 -l8
+[19.622s] Invoking command in '/home/amir/AVIS/build/avis': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/amir/AVIS/build/avis
+[19.634s] -- Install configuration: ""
+[19.636s] -- Execute custom install script
+[19.636s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/lib/avis/control
+[19.637s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/pythonpath.sh
+[19.637s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/pythonpath.dsv
+[19.638s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/PKG-INFO
+[19.638s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/SOURCES.txt
+[19.639s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/dependency_links.txt
+[19.639s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/top_level.txt
+[19.640s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/__init__.py
+[19.641s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/avisengine.py
+[19.641s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/config.py
+[19.641s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/utils.py
+[19.642s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/yegane.py
+[19.642s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/lib/avis/line.py
+[19.642s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/lib/avis/simulator.py
+[19.643s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis//launch/avis-launch.py
+[19.643s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/ament_index/resource_index/package_run_dependencies/avis
+[19.644s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/ament_index/resource_index/parent_prefix_path/avis
+[19.644s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/ament_prefix_path.sh
+[19.645s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/ament_prefix_path.dsv
+[19.645s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/path.sh
+[19.646s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/path.dsv
+[19.646s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.bash
+[19.646s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.sh
+[19.647s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.zsh
+[19.647s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.dsv
+[19.647s] -- Symlinking: /home/amir/AVIS/install/avis/share/avis/package.dsv
+[19.662s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/ament_index/resource_index/packages/avis
+[19.662s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/cmake/avisConfig.cmake
+[19.662s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/cmake/avisConfig-version.cmake
+[19.663s] -- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/package.xml
+[19.734s] Listing '/home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis'...
+[19.746s] Invoked command in '/home/amir/AVIS/build/avis' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/amir/AVIS/build/avis

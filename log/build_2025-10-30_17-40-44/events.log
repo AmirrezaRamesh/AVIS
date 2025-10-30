@@ -1,0 +1,258 @@
+[0.000000] (-) TimerEvent: {}
+[0.001287] (avis) JobQueued: {'identifier': 'avis', 'dependencies': OrderedDict()}
+[0.002540] (avis) JobStarted: {'identifier': 'avis'}
+[0.017068] (avis) JobProgress: {'identifier': 'avis', 'progress': 'cmake'}
+[0.018086] (avis) JobProgress: {'identifier': 'avis', 'progress': 'build'}
+[0.019507] (avis) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/amir/AVIS/build/avis', '--', '-j8', '-l8'], 'cwd': '/home/amir/AVIS/build/avis', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,7945,0'), ('LANGUAGE', 'en_US:en'), ('USER', 'amir'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/amir'), ('OLDPWD', '/home/amir'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('SYSTEMD_EXEC_PID', '2452'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/amir/AVIS/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'amir'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'amir'), ('TERM', 'screen'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/amir/.local/bin:/opt/ros/humble/bin:/home/amir/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/amirux:@/tmp/.ICE-unix/2419,unix/amirux:/tmp/.ICE-unix/2419'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/16b608b3_9bc8_4d98_bb28_cfc657055af2'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.7T6OF3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.104'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/amir/AVIS/build/avis'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/amir/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble')]), 'shell': False}
+[0.099129] (-) TimerEvent: {}
+[0.105838] (avis) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target control\x1b[0m\n'}
+[0.132363] (avis) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_avis\n'}
+[0.146941] (avis) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/control.dir/src/control.cpp.o\x1b[0m\n'}
+[0.199274] (-) TimerEvent: {}
+[0.299838] (-) TimerEvent: {}
+[0.406503] (-) TimerEvent: {}
+[0.506994] (-) TimerEvent: {}
+[0.607525] (-) TimerEvent: {}
+[0.708060] (-) TimerEvent: {}
+[0.785012] (avis) StdoutLine: {'line': b'running egg_info\n'}
+[0.787101] (avis) StdoutLine: {'line': b'writing avis.egg-info/PKG-INFO\n'}
+[0.787522] (avis) StdoutLine: {'line': b'writing dependency_links to avis.egg-info/dependency_links.txt\n'}
+[0.787804] (avis) StdoutLine: {'line': b'writing top-level names to avis.egg-info/top_level.txt\n'}
+[0.794237] (avis) StdoutLine: {'line': b"reading manifest file 'avis.egg-info/SOURCES.txt'\n"}
+[0.795736] (avis) StdoutLine: {'line': b"writing manifest file 'avis.egg-info/SOURCES.txt'\n"}
+[0.808254] (-) TimerEvent: {}
+[0.863351] (avis) StdoutLine: {'line': b'[ 33%] Built target ament_cmake_python_build_avis_egg\n'}
+[0.908415] (-) TimerEvent: {}
+[1.008908] (-) TimerEvent: {}
+[1.109475] (-) TimerEvent: {}
+[1.210030] (-) TimerEvent: {}
+[1.310566] (-) TimerEvent: {}
+[1.411059] (-) TimerEvent: {}
+[1.511631] (-) TimerEvent: {}
+[1.612195] (-) TimerEvent: {}
+[1.712907] (-) TimerEvent: {}
+[1.813538] (-) TimerEvent: {}
+[1.913962] (-) TimerEvent: {}
+[2.014452] (-) TimerEvent: {}
+[2.114853] (-) TimerEvent: {}
+[2.215265] (-) TimerEvent: {}
+[2.315669] (-) TimerEvent: {}
+[2.416081] (-) TimerEvent: {}
+[2.516496] (-) TimerEvent: {}
+[2.617002] (-) TimerEvent: {}
+[2.717640] (-) TimerEvent: {}
+[2.818460] (-) TimerEvent: {}
+[2.918917] (-) TimerEvent: {}
+[3.019350] (-) TimerEvent: {}
+[3.119842] (-) TimerEvent: {}
+[3.220263] (-) TimerEvent: {}
+[3.320709] (-) TimerEvent: {}
+[3.421224] (-) TimerEvent: {}
+[3.521700] (-) TimerEvent: {}
+[3.622114] (-) TimerEvent: {}
+[3.722653] (-) TimerEvent: {}
+[3.823144] (-) TimerEvent: {}
+[3.923749] (-) TimerEvent: {}
+[4.024277] (-) TimerEvent: {}
+[4.124793] (-) TimerEvent: {}
+[4.225245] (-) TimerEvent: {}
+[4.325732] (-) TimerEvent: {}
+[4.426236] (-) TimerEvent: {}
+[4.526846] (-) TimerEvent: {}
+[4.627299] (-) TimerEvent: {}
+[4.727738] (-) TimerEvent: {}
+[4.828182] (-) TimerEvent: {}
+[4.928687] (-) TimerEvent: {}
+[5.029254] (-) TimerEvent: {}
+[5.129743] (-) TimerEvent: {}
+[5.230263] (-) TimerEvent: {}
+[5.330674] (-) TimerEvent: {}
+[5.431181] (-) TimerEvent: {}
+[5.531682] (-) TimerEvent: {}
+[5.632101] (-) TimerEvent: {}
+[5.732613] (-) TimerEvent: {}
+[5.833078] (-) TimerEvent: {}
+[5.933603] (-) TimerEvent: {}
+[6.034198] (-) TimerEvent: {}
+[6.134702] (-) TimerEvent: {}
+[6.235282] (-) TimerEvent: {}
+[6.335799] (-) TimerEvent: {}
+[6.436256] (-) TimerEvent: {}
+[6.536707] (-) TimerEvent: {}
+[6.637130] (-) TimerEvent: {}
+[6.737580] (-) TimerEvent: {}
+[6.838091] (-) TimerEvent: {}
+[6.938569] (-) TimerEvent: {}
+[7.039230] (-) TimerEvent: {}
+[7.139737] (-) TimerEvent: {}
+[7.240221] (-) TimerEvent: {}
+[7.340922] (-) TimerEvent: {}
+[7.441613] (-) TimerEvent: {}
+[7.542595] (-) TimerEvent: {}
+[7.643081] (-) TimerEvent: {}
+[7.743638] (-) TimerEvent: {}
+[7.844121] (-) TimerEvent: {}
+[7.944807] (-) TimerEvent: {}
+[8.045436] (-) TimerEvent: {}
+[8.145885] (-) TimerEvent: {}
+[8.246421] (-) TimerEvent: {}
+[8.347005] (-) TimerEvent: {}
+[8.447502] (-) TimerEvent: {}
+[8.547980] (-) TimerEvent: {}
+[8.648458] (-) TimerEvent: {}
+[8.748903] (-) TimerEvent: {}
+[8.849380] (-) TimerEvent: {}
+[8.949923] (-) TimerEvent: {}
+[9.050443] (-) TimerEvent: {}
+[9.150988] (-) TimerEvent: {}
+[9.251451] (-) TimerEvent: {}
+[9.351977] (-) TimerEvent: {}
+[9.452674] (-) TimerEvent: {}
+[9.553184] (-) TimerEvent: {}
+[9.653671] (-) TimerEvent: {}
+[9.754265] (-) TimerEvent: {}
+[9.854818] (-) TimerEvent: {}
+[9.955316] (-) TimerEvent: {}
+[10.055823] (-) TimerEvent: {}
+[10.156395] (-) TimerEvent: {}
+[10.256953] (-) TimerEvent: {}
+[10.358517] (-) TimerEvent: {}
+[10.459033] (-) TimerEvent: {}
+[10.559469] (-) TimerEvent: {}
+[10.659910] (-) TimerEvent: {}
+[10.760335] (-) TimerEvent: {}
+[10.860798] (-) TimerEvent: {}
+[10.961255] (-) TimerEvent: {}
+[11.061743] (-) TimerEvent: {}
+[11.162249] (-) TimerEvent: {}
+[11.262879] (-) TimerEvent: {}
+[11.363478] (-) TimerEvent: {}
+[11.464018] (-) TimerEvent: {}
+[11.564557] (-) TimerEvent: {}
+[11.665304] (-) TimerEvent: {}
+[11.766095] (-) TimerEvent: {}
+[11.866639] (-) TimerEvent: {}
+[11.967229] (-) TimerEvent: {}
+[12.067900] (-) TimerEvent: {}
+[12.168449] (-) TimerEvent: {}
+[12.269063] (-) TimerEvent: {}
+[12.369692] (-) TimerEvent: {}
+[12.470295] (-) TimerEvent: {}
+[12.570722] (-) TimerEvent: {}
+[12.671160] (-) TimerEvent: {}
+[12.771559] (-) TimerEvent: {}
+[12.872070] (-) TimerEvent: {}
+[12.972495] (-) TimerEvent: {}
+[13.073004] (-) TimerEvent: {}
+[13.173498] (-) TimerEvent: {}
+[13.274084] (-) TimerEvent: {}
+[13.374533] (-) TimerEvent: {}
+[13.475050] (-) TimerEvent: {}
+[13.575533] (-) TimerEvent: {}
+[13.676001] (-) TimerEvent: {}
+[13.776502] (-) TimerEvent: {}
+[13.876942] (-) TimerEvent: {}
+[13.977430] (-) TimerEvent: {}
+[14.077919] (-) TimerEvent: {}
+[14.178450] (-) TimerEvent: {}
+[14.278982] (-) TimerEvent: {}
+[14.379538] (-) TimerEvent: {}
+[14.480029] (-) TimerEvent: {}
+[14.580504] (-) TimerEvent: {}
+[14.680988] (-) TimerEvent: {}
+[14.781545] (-) TimerEvent: {}
+[14.882130] (-) TimerEvent: {}
+[14.982690] (-) TimerEvent: {}
+[15.083304] (-) TimerEvent: {}
+[15.183784] (-) TimerEvent: {}
+[15.284178] (-) TimerEvent: {}
+[15.384658] (-) TimerEvent: {}
+[15.485195] (-) TimerEvent: {}
+[15.585779] (-) TimerEvent: {}
+[15.686270] (-) TimerEvent: {}
+[15.786806] (-) TimerEvent: {}
+[15.887337] (-) TimerEvent: {}
+[15.987876] (-) TimerEvent: {}
+[16.088431] (-) TimerEvent: {}
+[16.188955] (-) TimerEvent: {}
+[16.289485] (-) TimerEvent: {}
+[16.390049] (-) TimerEvent: {}
+[16.490573] (-) TimerEvent: {}
+[16.591059] (-) TimerEvent: {}
+[16.691525] (-) TimerEvent: {}
+[16.791982] (-) TimerEvent: {}
+[16.892518] (-) TimerEvent: {}
+[16.993061] (-) TimerEvent: {}
+[17.093534] (-) TimerEvent: {}
+[17.194077] (-) TimerEvent: {}
+[17.294650] (-) TimerEvent: {}
+[17.395195] (-) TimerEvent: {}
+[17.495703] (-) TimerEvent: {}
+[17.596222] (-) TimerEvent: {}
+[17.696725] (-) TimerEvent: {}
+[17.797291] (-) TimerEvent: {}
+[17.897802] (-) TimerEvent: {}
+[17.998186] (-) TimerEvent: {}
+[18.098785] (-) TimerEvent: {}
+[18.199272] (-) TimerEvent: {}
+[18.299763] (-) TimerEvent: {}
+[18.400308] (-) TimerEvent: {}
+[18.500862] (-) TimerEvent: {}
+[18.601318] (-) TimerEvent: {}
+[18.701893] (-) TimerEvent: {}
+[18.802363] (-) TimerEvent: {}
+[18.902901] (-) TimerEvent: {}
+[19.003326] (-) TimerEvent: {}
+[19.097771] (avis) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX executable control\x1b[0m\n'}
+[19.103472] (-) TimerEvent: {}
+[19.203989] (-) TimerEvent: {}
+[19.304487] (-) TimerEvent: {}
+[19.405171] (-) TimerEvent: {}
+[19.505814] (-) TimerEvent: {}
+[19.606606] (-) TimerEvent: {}
+[19.707116] (-) TimerEvent: {}
+[19.807524] (-) TimerEvent: {}
+[19.907967] (-) TimerEvent: {}
+[20.008412] (-) TimerEvent: {}
+[20.017376] (avis) StdoutLine: {'line': b'[100%] Built target control\n'}
+[20.108506] (-) TimerEvent: {}
+[20.117787] (avis) CommandEnded: {'returncode': 0}
+[20.119433] (avis) JobProgress: {'identifier': 'avis', 'progress': 'install'}
+[20.137534] (avis) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/amir/AVIS/build/avis'], 'cwd': '/home/amir/AVIS/build/avis', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,7945,0'), ('LANGUAGE', 'en_US:en'), ('USER', 'amir'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/amir'), ('OLDPWD', '/home/amir'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('SYSTEMD_EXEC_PID', '2452'), ('IM_CONFIG_CHECK_ENV', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/amir/AVIS/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'amir'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'amir'), ('TERM', 'screen'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/amir/.local/bin:/opt/ros/humble/bin:/home/amir/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/amirux:@/tmp/.ICE-unix/2419,unix/amirux:/tmp/.ICE-unix/2419'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/16b608b3_9bc8_4d98_bb28_cfc657055af2'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.7T6OF3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.104'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/amir/AVIS/build/avis'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/amir/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%0'), ('CMAKE_PREFIX_PATH', '/home/amir/AVIS/install/avis:/opt/ros/humble')]), 'shell': False}
+[20.154164] (avis) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[20.154939] (avis) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[20.155373] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/lib/avis/control\n'}
+[20.155761] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/pythonpath.sh\n'}
+[20.156056] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/pythonpath.dsv\n'}
+[20.156678] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[20.156944] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[20.157214] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[20.157397] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[20.157908] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/__init__.py\n'}
+[20.158255] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/avisengine.py\n'}
+[20.158691] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/config.py\n'}
+[20.158913] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/utils.py\n'}
+[20.159032] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis/yegane.py\n'}
+[20.159264] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/lib/avis/line.py\n'}
+[20.159718] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/lib/avis/simulator.py\n'}
+[20.160467] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis//launch/avis-launch.py\n'}
+[20.161093] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/ament_index/resource_index/package_run_dependencies/avis\n'}
+[20.161553] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/ament_index/resource_index/parent_prefix_path/avis\n'}
+[20.162024] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/ament_prefix_path.sh\n'}
+[20.162510] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/ament_prefix_path.dsv\n'}
+[20.162913] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/path.sh\n'}
+[20.163365] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/environment/path.dsv\n'}
+[20.163853] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.bash\n'}
+[20.164349] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.sh\n'}
+[20.164822] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.zsh\n'}
+[20.165094] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/local_setup.dsv\n'}
+[20.165396] (avis) StdoutLine: {'line': b'-- Symlinking: /home/amir/AVIS/install/avis/share/avis/package.dsv\n'}
+[20.182847] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/ament_index/resource_index/packages/avis\n'}
+[20.183293] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/cmake/avisConfig.cmake\n'}
+[20.183551] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/cmake/avisConfig-version.cmake\n'}
+[20.183770] (avis) StdoutLine: {'line': b'-- Up-to-date symlink: /home/amir/AVIS/install/avis/share/avis/package.xml\n'}
+[20.208669] (-) TimerEvent: {}
+[20.248340] (avis) StdoutLine: {'line': b"Listing '/home/amir/AVIS/install/avis/local/lib/python3.10/dist-packages/avis'...\n"}
+[20.264009] (avis) CommandEnded: {'returncode': 0}
+[20.303129] (avis) JobEnded: {'identifier': 'avis', 'rc': 0}
+[20.304307] (-) EventReactorShutdown: {}

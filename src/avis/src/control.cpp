@@ -10,8 +10,8 @@ class ControlNode : public rclcpp::Node
 {
 public:
     ControlNode() : Node("control_node"),
-                    stan(0.5, 0.8, 0.005, 35, -1),
-                    pid(1, 0, 0, 30)
+                    stan(0.8, 0.5, 0.0, 40, 20)
+                    // pid(1, 0, 0, 30)
     {
 
         subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
@@ -69,7 +69,7 @@ private:
     void controller(float angle, float offset)
     {
         // constant speed  version
-        float speed = 30.0;
+        float speed = 40.0;
         float steering = stan.calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);
 
@@ -86,7 +86,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
 
     Stanley stan;
-    PID pid;
+    // PID pid;
 
     // 1500 means nothing has been detected
     //  float left_sensor_ = 1500, middle_sensor_=1500, right_sensor_=1500;

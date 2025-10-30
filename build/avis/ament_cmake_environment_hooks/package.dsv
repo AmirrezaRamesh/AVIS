@@ -1,0 +1,4 @@
+source;share/avis/local_setup.bash
+source;share/avis/local_setup.dsv
+source;share/avis/local_setup.sh
+source;share/avis/local_setup.zsh

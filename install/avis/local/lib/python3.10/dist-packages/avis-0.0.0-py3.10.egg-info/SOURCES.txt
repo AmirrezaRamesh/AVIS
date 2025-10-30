@@ -1,0 +1,1 @@
+/home/amir/AVIS/build/avis/ament_cmake_python/avis/avis.egg-info/SOURCES.txt

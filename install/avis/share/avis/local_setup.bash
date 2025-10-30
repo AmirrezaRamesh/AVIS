@@ -1,0 +1,1 @@
+/home/amir/AVIS/build/avis/ament_cmake_environment_hooks/local_setup.bash
