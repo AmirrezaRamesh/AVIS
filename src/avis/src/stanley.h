@@ -1,6 +1,10 @@
-#include <deque>
 #ifndef STANLEY
 #define STANLEY
+#include <deque>
+#include <iostream>
+#include <cmath>
+
+using namespace std;
 
 class Stanley
 {
@@ -13,9 +17,7 @@ private:
     float limit;
     float prev_error;
     float legal_error;
-    deque<float> error_buffers = {0, 0, 0, 0, 0, 0, 0, 0};
-
-    float pi;
+    deque<float> error_buffers;
 
 public:
     Stanley(const float &s, const float &d, const float &ks, const float &limit, const float &legal_error);
