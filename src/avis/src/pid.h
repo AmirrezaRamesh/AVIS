@@ -11,6 +11,7 @@ private:
     float error;
     float prev_error;
     float sum_error;
+    float dt;
 
     float limit;
 
@@ -18,11 +19,11 @@ private:
     float set_constrain(const float &input);
 
 public:
-    PID(const float &kp, const float &ki, const float &kd, const float &constrains);
+    PID(float kp,float ki,float kd, float constrains,float dt);
     float get_p();
-    float get_d(float dt);
+    float get_d();
     float get_i();
-    float get_pid(float e, float dt);
+    float get_pid(float e);
 };
 
 #endif

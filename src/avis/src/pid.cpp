@@ -1,6 +1,6 @@
 #include "pid.h"
 
-PID::PID(const float &kp, const float &ki, const float &kd, const float &constrain)
+PID::PID(float kp, float ki, float kd, float constrain, float dt)
 {
     this->k_p = kp;
     this->k_i = ki;
@@ -11,6 +11,7 @@ PID::PID(const float &kp, const float &ki, const float &kd, const float &constra
     this->error = 0;
     this->prev_error = 0;
     this->sum_error = 0;
+    this->dt = dt;
 }
 
 void PID::set_error(float e)
@@ -42,15 +43,15 @@ float PID::get_i()
     return sum_error;
 }
 
-float PID::get_d(float dt)
+float PID::get_d()
 {
     return k_d * (error - prev_error) / dt;
 }
 
-float PID::get_pid(float e, float dt)
+float PID::get_pid(float e)
 {
     set_error(e);
-    float pid_result = get_p() + get_i() + get_d(dt);
+    float pid_result = get_p() + get_i() + get_d();
 
     prev_error = error;
 
