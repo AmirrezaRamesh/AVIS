@@ -56,8 +56,6 @@ class LineNode(Node):
         f = 1/(time.time() - t1)
         # self.get_logger().info(f'Update frequency: {f:.2f} Hz')
 
-
-
 def main(args=None):
     rclpy.init(args=args)
     node = LineNode()
@@ -70,7 +68,6 @@ def main(args=None):
         node.destroy_node()
         rclpy.shutdown()
         cv2.destroyAllWindows()
-
 
 if __name__ == '__main__':
     main()

@@ -33,8 +33,13 @@ class CarPublisher(Node):
     def actuate_callback(self, msg: Float32MultiArray):
         if len(msg.data) >= 2:
             self.speed, self.steering = msg.data[:2]
+
             self.car.setSpeed(self.speed)
             self.car.setSteering(self.steering)
+
+            # self.get_logger().info(f'set: {self.speed}')
+            # self.get_logger().info(f'get: {self.current_speed}')
+            
         else:
             self.get_logger().warn('Received actuate data with less than 2 elements')
 
@@ -45,7 +50,7 @@ class CarPublisher(Node):
             self.car.getData()
             # sensors = self.car.getSensors()  # [Left, Middle, Right]
             # self.car.setSensorAngle(40)
-
+            self.current_speed = self.car.getSpeed()
             # Publish sensor data
             # sensor_msg = Float32MultiArray(data=[float(s) for s in sensors])
             # self.sensor_pub.publish(sensor_msg)
