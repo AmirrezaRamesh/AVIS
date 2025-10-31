@@ -19,16 +19,15 @@ public:
     this->declare_parameter<double>("steer_limit", 40.0);
     this->declare_parameter<double>("legal_error", 20.0);
 
-    double k = this->get_parameter("gain_yaw").as_double();
-    double softening = this->get_parameter("gain_crosstack_error").as_double();
-    double wheelbase = this->get_parameter("gain_ks").as_double();
-    double max_steer = this->get_parameter("steer_limit").as_double();
-    double max_speed = this->get_parameter("legal_error").as_double();
+    double gain_yaw = this->get_parameter("gain_yaw").as_double();
+    double gain_crosstack_error = this->get_parameter("gain_crosstack_error").as_double();
+    double gain_ks = this->get_parameter("gain_ks").as_double();
+    double steer_limit = this->get_parameter("steer_limit").as_double();
+    double legal_error = this->get_parameter("legal_error").as_double();
 
 
     // ######## controller ########
-
-    stan = std::make_unique<Stanley>(k, softening, wheelbase, max_steer, max_speed);
+    stan = std::make_unique<Stanley>(gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error);
 
 
     // ######## ROS pub/sub ########
