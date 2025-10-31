@@ -13,22 +13,18 @@ class CarPublisher(Node):
     def __init__(self):
         super().__init__('car_publisher_node')
 
-        self.camera_pub = self.create_publisher(Image, '/camera', 10)
         # self.sensor_pub = self.create_publisher(Float32MultiArray, '/distance', 10)
+        self.camera_pub = self.create_publisher(Image, '/camera', 10)
         self.create_subscription(Float32MultiArray, '/actuate', self.actuate_callback, 10)
 
         self.bridge = CvBridge()
         self.speed = 0.0
         self.steering = 0.0
+        
+        self.car = avisengine.Car()
+        self.connect_to_simulator()
 
-        try:
-            self.car = avisengine.Car()
-            self.car.connect(config.SIMULATOR_IP, config.SIMULATOR_PORT)
-        except Exception as e:
-            self.get_logger().error(f"Failed to initialize car: {e}")
-            raise
-
-        time.sleep(3)
+        time.sleep(2)
 
         self.get_logger().info('CarPublisher Node Started.')
 
@@ -62,12 +58,30 @@ class CarPublisher(Node):
 
         except BrokenPipeError:
             self.get_logger().error("Broken pipe: simulator not ready or connection lost")
+            self.connect_to_simulator()
         except Exception as e:
             self.get_logger().error(f"Error in update loop: {e}")
+            self.connect_to_simulator()
             return
 
         f = 1.0 / max(1e-6, (time.time() - t1))
-        self.get_logger().info(f'Update frequency: {f:.2f} Hz')
+        # self.get_logger().info(f'Update frequency: {f:.2f} Hz')
+
+    def connect_to_simulator(self):
+
+        MAX_RETRIES = 30
+        RETRY_DELAY = 1.0
+
+        for attempt in range(MAX_RETRIES):
+            try:
+                self.car.connect(config.SIMULATOR_IP, config.SIMULATOR_PORT)
+                self.get_logger().info("Connected to simulator successfully.")
+                return
+            except Exception as e:
+                self.get_logger().warn(f"Reconnect attempt {attempt+1}/{MAX_RETRIES} failed: {e}")
+                time.sleep(RETRY_DELAY)
+
+        self.get_logger().error("Failed to reconnect to simulator after several attempts.")
 
     def stop_car(self):
         try:

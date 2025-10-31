@@ -8,7 +8,8 @@ def generate_launch_description():
             package='avis',
             executable='simulator.py',
             name='simulator',
-            output='screen'
+            output='screen',
+            respawn=True,
         ),
 
         TimerAction(
@@ -17,7 +18,8 @@ def generate_launch_description():
                 package='avis',
                 executable='line.py',
                 name='line',
-                output='log'
+                output='log',
+                respawn=True,
             )]
         ),
 
@@ -27,8 +29,15 @@ def generate_launch_description():
                 package='avis',
                 executable='control',
                 name='control',
-                output='log'
+                output='log',
+                respawn=True,
+                parameters=[{
+                    'gain_yaw': 0.55,
+                    'gain_crosstack_error': 0.2,
+                    'gain_ks': 0.001,
+                    'steer_limit': 70.0,
+                    'legal_error': 100.0
+                }]
             )]
         ),
-
     ])

@@ -144,13 +144,14 @@ class LaneDetector:
         return road, distance, -degree
 
     def process_frame(self, frame):
-        frame = cv2.resize(frame, (500, 300))
+        frame = frame[300:500, 0:]
+        frame = cv2.resize(frame, (500, 200))
         #cv2.imshow("original", frame)
 
         width, height = frame.shape[1], frame.shape[0]
 
-        src_points = np.array([[160, 170], [400, 170], [500, 230], [50, 230]], dtype="float32")
-        dst_points = np.array([[50, 100], [450, 100], [450, 300], [50, 300]], dtype="float32")
+        src_points = np.array([[100, 50], [400, 50], [500, 190], [0, 190]], dtype="float32")
+        dst_points = np.array([[0, 50], [500, 50], [500, 190], [0, 190]], dtype="float32")
 
         matrix = cv2.getPerspectiveTransform(src_points, dst_points)
         warped = cv2.warpPerspective(frame, matrix, (width, height))
@@ -170,6 +171,8 @@ class LaneDetector:
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
         cv2.putText(result, f"Degree : {round(degree, 2)}", (10, 40),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+        
+        cv2.line(road, (width//2, 0), (width//2, height), (0,100,100), 2)
         
         for pt in src_points.astype(int):
             cv2.circle(result, tuple(pt), 3, color=(0, 0, 255), thickness=-1)
