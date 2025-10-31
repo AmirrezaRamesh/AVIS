@@ -1,6 +1,5 @@
 #include "stanley.h"
 
-// private
 float Stanley::radToDegree(const float &rad)
 {
     return rad * 180 / M_PI;
@@ -10,7 +9,7 @@ float Stanley::degreeToRad(const float &degree)
 {
     return degree * M_PI / 180;
 }
-// publics
+
 Stanley::Stanley(const float &s, const float &d, const float &ks, const float &limit, const float &legal_error)
 {
     this->gain_d = d;
@@ -28,7 +27,7 @@ float Stanley::set_limits(const float &input)
 {
     if (input > limit)
         return limit;
-    if (input < -limit) 
+    if (input < -limit)
         return -limit;
     return input;
 }
