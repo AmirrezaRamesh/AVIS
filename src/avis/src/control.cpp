@@ -9,11 +9,11 @@ using namespace std;
 class ControlNode : public rclcpp::Node
 {
 public:
-    ControlNode() : Node("control_node")
+    ControlNode() : Node("control")
 
     { 
-    // ######## params ########
-    this->declare_parameter<double>("gain_yaw", 0.35);
+    // ######## ROS params ########
+    this->declare_parameter<double>("gain_yaw", 0.55);
     this->declare_parameter<double>("gain_crosstack_error", 0.2);
     this->declare_parameter<double>("gain_ks", 0.0);
     this->declare_parameter<double>("steer_limit", 40.0);
@@ -24,13 +24,12 @@ public:
     double gain_ks = this->get_parameter("gain_ks").as_double();
     double steer_limit = this->get_parameter("steer_limit").as_double();
     double legal_error = this->get_parameter("legal_error").as_double();
-
-
+    
     // ######## controller ########
     stan = std::make_unique<Stanley>(gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error);
 
 
-    // ######## ROS pub/sub ########
+    // ######## ROS config ########
     subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
         "/line",
         10,
@@ -46,11 +45,40 @@ public:
         "/actuate",
         10);
 
+    init_timer_ = this->create_wall_timer(
+    std::chrono::milliseconds(200),
+    std::bind(&ControlNode::init_controller, this));
+
     RCLCPP_INFO(this->get_logger(), "Control Node Started");
 
     }
 
 private:
+
+    void init_controller()
+        {
+            double gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error;
+
+            this->get_parameter("gain_yaw", gain_yaw);
+            this->get_parameter("gain_crosstack_error", gain_crosstack_error);
+            this->get_parameter("gain_ks", gain_ks);
+            this->get_parameter("steer_limit", steer_limit);
+            this->get_parameter("legal_error", legal_error);
+
+            stan = std::make_unique<Stanley>(gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error);
+
+            RCLCPP_INFO(this->get_logger(),
+                        "Stanley initialized with params:\n"
+                        "  gain_yaw = %.3f\n"
+                        "  gain_crosstack_error = %.3f\n"
+                        "  gain_ks = %.3f\n"
+                        "  steer_limit = %.3f\n"
+                        "  legal_error = %.3f",
+                        gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error);
+
+            init_timer_->cancel();
+        }
+
     void line_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
     {
         if (msg->data.size() < 2)
@@ -94,19 +122,19 @@ private:
         msg.data = {speed, steering};
         publisher_->publish(msg);
     }
-    // #############  controller block  ############
 
+    // ###### ROS Objects #######
     rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_line_;
     // rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_distance_;
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
+    rclcpp::TimerBase::SharedPtr init_timer_;
+    //  float left_sensor_ = 1500, middle_sensor_=1500, right_sensor_=1500;
+    //  bool distance_received_ = false;
 
     std::unique_ptr<Stanley> stan; // <-- use pointer instead of direct instance
 
     // PID pid;
 
-    // 1500 means nothing has been detected
-    //  float left_sensor_ = 1500, middle_sensor_=1500, right_sensor_=1500;
-    //  bool distance_received_ = false;
 };
 
 int main(int argc, char *argv[])

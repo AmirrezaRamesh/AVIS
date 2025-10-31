@@ -10,7 +10,6 @@ def generate_launch_description():
             name='simulator',
             output='screen',
             respawn=True,
-            respawn_delay=5.0
         ),
 
         TimerAction(
@@ -21,7 +20,6 @@ def generate_launch_description():
                 name='line',
                 output='log',
                 respawn=True,
-                respawn_delay=5.0
             )]
         ),
 
@@ -33,12 +31,11 @@ def generate_launch_description():
                 name='control',
                 output='log',
                 respawn=True,
-                respawn_delay=5.0,
                 parameters=[{
-                    'gain_crosstack_error': 0.35,
+                    'gain_yaw': 0.55,
                     'gain_crosstack_error': 0.2,
-                    'gain_ks': 0.0,
-                    'steer_limit': 60.0,
+                    'gain_ks': 0.001,
+                    'steer_limit': 70.0,
                     'legal_error': 100.0
                 }]
             )]
