@@ -9,31 +9,46 @@ using namespace std;
 class ControlNode : public rclcpp::Node
 {
 public:
-    ControlNode() : Node("control_node"),
-                    stan(0.35, 0.2, 0.0, 40, 20)
-                    // pid(1, 0, 0, 30)
-    {
+    ControlNode() : Node("control_node")
 
-        subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
-            "/line",
-            10,
-            std::bind(&ControlNode::line_callback, this, std::placeholders::_1));
+    { 
+    // ######## params ########
+    this->declare_parameter<double>("gain_yaw", 0.35);
+    this->declare_parameter<double>("gain_crosstack_error", 0.2);
+    this->declare_parameter<double>("gain_ks", 0.0);
+    this->declare_parameter<double>("steer_limit", 40.0);
+    this->declare_parameter<double>("legal_error", 20.0);
 
-        // subscription_distance_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
-        //     "/distance",
-        //     10,
-        //     std::bind(&ControlNode::distance_callback, this, std::placeholders::_1)
-        // );
+    double k = this->get_parameter("gain_yaw").as_double();
+    double softening = this->get_parameter("gain_crosstack_error").as_double();
+    double wheelbase = this->get_parameter("gain_ks").as_double();
+    double max_steer = this->get_parameter("steer_limit").as_double();
+    double max_speed = this->get_parameter("legal_error").as_double();
 
-        publisher_ = this->create_publisher<std_msgs::msg::Float32MultiArray>(
-            "/actuate",
-            10);
 
-        RCLCPP_INFO(this->get_logger(), "Control Node Started");
+    // ######## controller ########
 
-        // ######## controller ########
+    stan = std::make_unique<Stanley>(k, softening, wheelbase, max_steer, max_speed);
 
-        // ######## controller ########
+
+    // ######## ROS pub/sub ########
+    subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
+        "/line",
+        10,
+        std::bind(&ControlNode::line_callback, this, std::placeholders::_1));
+
+    // subscription_distance_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
+    //     "/distance",
+    //     10,
+    //     std::bind(&ControlNode::distance_callback, this, std::placeholders::_1)
+    // );
+
+    publisher_ = this->create_publisher<std_msgs::msg::Float32MultiArray>(
+        "/actuate",
+        10);
+
+    RCLCPP_INFO(this->get_logger(), "Control Node Started");
+
     }
 
 private:
@@ -70,7 +85,8 @@ private:
     {
         // constant speed  version
         float speed = 45.0;
-        float steering = stan.calculate_steer(offset, angle, speed);
+
+        float steering = stan->calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);
 
         // RCLCPP_INFO(this->get_logger(), "data is %f", steering);
@@ -85,7 +101,8 @@ private:
     // rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_distance_;
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
 
-    Stanley stan;
+    std::unique_ptr<Stanley> stan; // <-- use pointer instead of direct instance
+
     // PID pid;
 
     // 1500 means nothing has been detected
