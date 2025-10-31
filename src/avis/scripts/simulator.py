@@ -12,7 +12,7 @@ from avis import avisengine, config
 class CarPublisher(Node):
     def __init__(self):
         super().__init__('car_publisher_node')
-        
+
         # self.sensor_pub = self.create_publisher(Float32MultiArray, '/distance', 10)
         self.camera_pub = self.create_publisher(Image, '/camera', 10)
         self.create_subscription(Float32MultiArray, '/actuate', self.actuate_callback, 10)
@@ -65,7 +65,7 @@ class CarPublisher(Node):
             return
 
         f = 1.0 / max(1e-6, (time.time() - t1))
-        self.get_logger().info(f'Update frequency: {f:.2f} Hz')
+        # self.get_logger().info(f'Update frequency: {f:.2f} Hz')
 
     def connect_to_simulator(self):
 
@@ -75,7 +75,7 @@ class CarPublisher(Node):
         for attempt in range(MAX_RETRIES):
             try:
                 self.car.connect(config.SIMULATOR_IP, config.SIMULATOR_PORT)
-                self.get_logger().info("Reconnected to simulator successfully.")
+                self.get_logger().info("Connected to simulator successfully.")
                 return
             except Exception as e:
                 self.get_logger().warn(f"Reconnect attempt {attempt+1}/{MAX_RETRIES} failed: {e}")

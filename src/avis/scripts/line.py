@@ -34,7 +34,7 @@ class LineNode(Node):
         msg = Float32MultiArray()
         msg.data = [float(angle), float(offset)]
         self.line_pub.publish(msg)
-        self.get_logger().info(f'Published line: [angle={angle:.2f}, offset={offset:.2f}]')
+        # self.get_logger().info(f'Published line: [angle={angle:.2f}, offset={offset:.2f}]')
 
     def process_image(self, image):
         t1 = time.time()
@@ -54,7 +54,7 @@ class LineNode(Node):
             msg.data = [0.0, 0.0]
             self.line_pub.publish(msg)
         f = 1/(time.time() - t1)
-        self.get_logger().info(f'Update frequency: {f:.2f} Hz')
+        # self.get_logger().info(f'Update frequency: {f:.2f} Hz')
 
 
 
