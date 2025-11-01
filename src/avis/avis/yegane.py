@@ -1,36 +1,106 @@
 import numpy as np
 import cv2
+import time
 
 class LaneDetector:
-    def __init__(self):
-        pass
+    def __init__(self, width_of_line=250):
+        self.width_of_line = width_of_line
 
     def line_detection(self, warped):
         gray_frame = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
         hsv = cv2.cvtColor(warped, cv2.COLOR_RGB2HSV)
         hls = cv2.cvtColor(warped, cv2.COLOR_RGB2HLS)
 
-        blurred = cv2.GaussianBlur(gray_frame, (7, 7), 0)
+        blurred = cv2.GaussianBlur(gray_frame, (5, 5), 0)
 
-        _, thresh = cv2.threshold(blurred, thresh=100, maxval=255, type=cv2.THRESH_TOZERO)
-        adaptive = cv2.adaptiveThreshold(
-            blurred, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 15, -10
-        )
+        _, thresh = cv2.threshold(blurred, thresh=200, maxval=255, type=cv2.THRESH_TOZERO)
+        #adaptive = cv2.adaptiveThreshold(
+            #blurred, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 15, -10)
 
-        edge = cv2.Canny(adaptive, 75, 200)
+        #edge = cv2.Canny(adaptive, 75, 200)
+        
+        cv2.imshow("thresh", thresh)
+        return thresh
 
-        return adaptive
 
-    def find_lane(self, img):
-        histogram = np.sum(img[img.shape[0] // 4:, :], axis=0)
+    def single_line(self,img, histogram, check):
 
         midpoint = int(histogram.shape[0] // 2)
+        leftx_base = np.argmax(histogram[:midpoint])
+
+        nwindows = 10
+        minpix = 100
+        window_width = 20
+        window_height = int(img.shape[0] // nwindows)
+
+        nonzero = img.nonzero()
+        nonzeroy = np.array(nonzero[0])
+        nonzerox = np.array(nonzero[1])
+
+        # Current positions to be updated later
+        onex_current = leftx_base
+        one_lane_inds = []
+
+        out_img = np.dstack((img, img, img))
+
+        for window in range(nwindows):
+            win_y_low = img.shape[0] - (window + 1) * window_height
+            win_y_high = img.shape[0] - window * window_height
+            win_xone_l = onex_current - window_width
+            win_xone_r = onex_current + window_width
+
+            good_line_inds = ((nonzeroy >= win_y_low) & (nonzeroy < win_y_high) &
+                              (nonzerox >= win_xone_l) & (nonzerox < win_xone_r)).nonzero()[0]
+
+            one_lane_inds.append(good_line_inds)
+    
+            if len(good_line_inds) > minpix:
+                onex_current = int(np.mean(nonzerox[good_line_inds]))
+  
+        try:
+            one_lane_inds = np.concatenate(one_lane_inds)
+        except ValueError:
+            pass
+
+        linex = nonzerox[one_lane_inds]
+        liney = nonzeroy[one_lane_inds]
+        
+        line_fit = np.polyfit(liney, linex, 2)
+
+        width = img.shape[1]
+        height = img.shape[0]
+        ploty = np.linspace(0, height - 1, height)
+
+        try:
+            line_fitx = line_fit[0] * ploty ** 2 + line_fit[1] * ploty + line_fit[2]
+        except TypeError:
+            print('The function failed to fit a line!')
+            line_fitx = 1 * ploty ** 2 + 1 * ploty
+
+        if check == "right":
+            center_fitx = (line_fitx - (self.width_of_line/2))
+        if check == "left":
+            center_fitx = (line_fitx + (self.width_of_line/2))
+
+        center_fit = [line_fit[0], line_fit[1], line_fit[2]]
+
+        road = np.zeros((height, width, 3), dtype=np.uint8)
+        cv2.polylines(road, [np.int32(np.column_stack((line_fitx, ploty)))], False, (255, 0, 0), 5)
+        cv2.polylines(road, [np.int32(np.column_stack((center_fitx, ploty)))], False, (255, 0, 255), 5)
+        cv2.line(road, (250,0), (250,199), (0,200,200), 2)
+
+        return center_fit, center_fitx, ploty, road
+
+    def double_line(self, img, histogram):
+
+        midpoint = int(histogram.shape[0] // 2)
+
         leftx_base = np.argmax(histogram[:midpoint])
         rightx_base = np.argmax(histogram[midpoint:]) + midpoint
 
         # Windows properties
         nwindows = 10
-        minpix = 50
+        minpix = 100
         window_width = 20
         window_height = int(img.shape[0] // nwindows)
 
@@ -54,11 +124,6 @@ class LaneDetector:
             win_xleft_r = leftx_current + window_width
             win_xright_l = rightx_current - window_width
             win_xright_r = rightx_current + window_width
-
-            cv2.rectangle(out_img, (win_xleft_l, win_y_low),
-                          (win_xleft_r, win_y_high), (0, 255, 0), 2)
-            cv2.rectangle(out_img, (win_xright_l, win_y_low),
-                          (win_xright_r, win_y_high), (0, 255, 0), 2)
 
             good_left_inds = ((nonzeroy >= win_y_low) & (nonzeroy < win_y_high) &
                               (nonzerox >= win_xleft_l) & (nonzerox < win_xleft_r)).nonzero()[0]
@@ -85,11 +150,7 @@ class LaneDetector:
         rightx = nonzerox[right_lane_inds]
         righty = nonzeroy[right_lane_inds]
 
-        return leftx, lefty, rightx, righty, out_img
-
-    def fit_polynomial(self, img):
-        leftx, lefty, rightx, righty, out_img = self.find_lane(img)
-
+        
         left_fit = np.polyfit(lefty, leftx, 2)
         right_fit = np.polyfit(righty, rightx, 2)
 
@@ -104,7 +165,7 @@ class LaneDetector:
             print('The function failed to fit a line!')
             left_fitx = 1 * ploty ** 2 + 1 * ploty
             right_fitx = 1 * ploty ** 2 + 1 * ploty
-
+            
         center_fitx = (left_fitx + right_fitx) // 2
 
         center_fit = [
@@ -112,6 +173,35 @@ class LaneDetector:
             (left_fit[1] + right_fit[1]) / 2,
             (left_fit[2] + right_fit[2]) / 2
         ]
+
+        self.width_of_line = right_fitx[-1] - left_fitx[-1]
+
+        road = np.zeros((height, width, 3), dtype=np.uint8)
+        cv2.polylines(road, [np.int32(np.column_stack((left_fitx, ploty)))], False, (255, 0, 0), 5)
+        cv2.polylines(road, [np.int32(np.column_stack((right_fitx, ploty)))], False, (0, 0, 255), 5)
+        cv2.polylines(road, [np.int32(np.column_stack((center_fitx, ploty)))], False, (0, 255, 0), 5)
+        cv2.line(road, (250,0), (250,199), (0,200,200), 2)
+
+        return center_fit, center_fitx, ploty, road
+
+    def find_lane(self, img):
+        histogram = np.sum(img[img.shape[0]//2:, :], axis=0)
+
+        midpoint = int(histogram.shape[0] // 2)
+
+        if max(histogram[:midpoint]) < 4000 : # no left line
+            print("no left")
+            center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "right")
+        if max(histogram[midpoint:]) < 4000 : # no right line
+            print("no right")
+            center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "left")
+        else:
+            center_fit, center_fitx, ploty, road = self.double_line(img, histogram)
+
+        return center_fit, center_fitx, ploty, road
+
+    def fit_polynomial(self, img):
+        center_fit, center_fitx, ploty, road = self.find_lane(img)
 
         d_center = np.polyder(center_fit)
         center_y = ploty[-20:]
@@ -121,9 +211,8 @@ class LaneDetector:
 
         for i in range(20):
             d = last_20[i]
-            distance += (w1 * (d - (width // 2)))/210
+            distance += (w1 * (d - (500 // 2)))/210
             w1 -= 1
-
 
             y = center_y[i]
             m_center = np.polyval(d_center, y)
@@ -131,20 +220,10 @@ class LaneDetector:
             degree += theta
             w2 -= 1
 
-        out_img[lefty, leftx] = [255, 0, 0]
-        out_img[righty, rightx] = [0, 0, 255]
-
-        road = np.zeros((height, width, 3), dtype=np.uint8)
-        cv2.polylines(road, [np.int32(np.column_stack((left_fitx, ploty)))], False, (255, 0, 0), 5)
-        cv2.polylines(road, [np.int32(np.column_stack((right_fitx, ploty)))], False, (0, 0, 255), 5)
-        cv2.polylines(road, [np.int32(np.column_stack((center_fitx, ploty)))], False, (0, 255, 0), 5)
-
-        #cv2.imshow("windows", out_img)
-
         return road, distance, -degree
 
     def process_frame(self, frame):
-        frame = frame[300:500, 0:]
+        frame = frame[300:500, :]
         frame = cv2.resize(frame, (500, 200))
         #cv2.imshow("original", frame)
 
