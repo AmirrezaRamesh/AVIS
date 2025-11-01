@@ -111,7 +111,7 @@ private:
     void controller(float angle, float offset)
     {
         // constant speed  version
-        float speed = 45.0;
+        float speed = 150.0;
 
         float steering = stan->calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);

@@ -24,6 +24,9 @@ class LineNode(Node):
     def camera_callback(self, msg):
 
         try:
+            if self.lane_detector.any_road:
+                self.get_logger().info('No line Detected!')
+
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
             self.process_image(cv_image)
         except Exception as e:
