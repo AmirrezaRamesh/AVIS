@@ -5,7 +5,7 @@ import time
 class LaneDetector:
     def __init__(self, width_of_line=250):
         self.width_of_line = width_of_line
-
+    #line_detection
     def line_detection(self, warped):
         gray_frame = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
         hsv = cv2.cvtColor(warped, cv2.COLOR_RGB2HSV)
