@@ -28,7 +28,6 @@ public:
     // ######## controller ########
     stan = std::make_unique<Stanley>(gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error);
 
-
     // ######## ROS config ########
     subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
         "/line",
@@ -111,7 +110,7 @@ private:
     void controller(float angle, float offset)
     {
         // constant speed  version
-        float speed = 45.0;
+        float speed = 105.0;
 
         float steering = stan->calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);
