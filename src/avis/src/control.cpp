@@ -88,7 +88,7 @@ private:
 
         float offset = msg->data[0];
         float angle = msg->data[1];
-        float curve = msg->data[2]
+        float curve = msg->data[2];
 
         controller(angle, offset, curve);
     }
