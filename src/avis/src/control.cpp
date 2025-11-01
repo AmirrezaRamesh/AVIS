@@ -28,7 +28,6 @@ public:
     // ######## controller ########
     stan = std::make_unique<Stanley>(gain_yaw, gain_crosstack_error, gain_ks, steer_limit, legal_error);
 
-
     // ######## ROS config ########
     subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
         "/line",
@@ -89,8 +88,9 @@ private:
 
         float offset = msg->data[0];
         float angle = msg->data[1];
+        float curve = msg->data[2];
 
-        controller(angle, offset);
+        controller(angle, offset, curve);
     }
 
     // void distance_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
@@ -108,10 +108,10 @@ private:
     // }
 
     // #############  controller block  ############
-    void controller(float angle, float offset)
+    void controller(float angle, float offset, float curve)
     {
         // constant speed  version
-        float speed = 150.0;
+        float speed = 105.0;
 
         float steering = stan->calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);
