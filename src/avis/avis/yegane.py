@@ -3,10 +3,11 @@ import cv2
 import time
 
 class LaneDetector:
-    def __init__(self, width_of_line=250, degree=0, distance=0):
+    def __init__(self, width_of_line=250, degree=0, distance=0, curve=0):
         self.width_of_line = width_of_line +5
         self.degree = degree
         self.distance = distance
+        self.curve = curve
         self.any_road = False
 
     #line_detection
@@ -44,8 +45,6 @@ class LaneDetector:
         # Current positions to be updated later
         onex_current = leftx_base
         one_lane_inds = []
-
-        out_img = np.dstack((img, img, img))
 
         for window in range(nwindows):
             win_y_low = img.shape[0] - (window + 1) * window_height
@@ -118,8 +117,6 @@ class LaneDetector:
 
         left_lane_inds = []
         right_lane_inds = []
-
-        out_img = np.dstack((img, img, img))
 
         for window in range(nwindows):
             win_y_low = img.shape[0] - (window + 1) * window_height
@@ -211,7 +208,6 @@ class LaneDetector:
         left_lane_inds = []
         right_lane_inds = []
 
-        out_img = np.dstack((img, img, img))
 
         for window in range(nwindows):
             win_y_low = img.shape[0] - (window + 1) * window_height
@@ -295,11 +291,11 @@ class LaneDetector:
             center_fit, center_fitx, ploty, road = self.linear_line(img, histogram)
 
         elif max(histogram[:midpoint]) < 4000 : # no left line
-            #no left
             center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "right")
+        
         elif max(histogram[midpoint:]) < 4000 : # no right line
-            #no right
             center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "left")
+        
         else:
             center_fit, center_fitx, ploty, road = self.double_line(img, histogram)
 
@@ -308,10 +304,8 @@ class LaneDetector:
     def fit_polynomial(self, img):
         center_fit, center_fitx, ploty, road, self.any_road = self.find_lane(img)
 
-        if self.any_road:
-            degree = self.degree
-            distance = self.distance
-        else:
+        if not self.any_road:
+ 
             d_center = np.polyder(center_fit)
             center_y = ploty[-20:]
 
@@ -331,8 +325,9 @@ class LaneDetector:
 
             self.degree = degree
             self.distance = distance
+            self.curve = center_fit[0]
 
-        return road, distance, -degree
+        return road, self.distance, -self.degree, abs(self.curve)*1000
 
     def process_frame(self, frame):
         frame = frame[300:500, :]
@@ -350,7 +345,7 @@ class LaneDetector:
         #cv2.imshow("frame", frame)
 
         clean_line = self.line_detection(warped)
-        road, distance, degree = self.fit_polynomial(clean_line)
+        road, distance, degree, curve = self.fit_polynomial(clean_line)
 
         Minv = cv2.getPerspectiveTransform(dst_points, src_points)
         road_w = cv2.warpPerspective(road, Minv, (width, height))
@@ -359,9 +354,13 @@ class LaneDetector:
         road_on_warped = cv2.addWeighted(warped, 1, road, 1, 0)
 
         cv2.putText(result, f"Distance : {round(distance, 2)}", (10, 20),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
         cv2.putText(result, f"Degree : {round(degree, 2)}", (10, 40),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+        cv2.putText(result, f"Curve : {round(curve, 2)}", (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+        cv2.putText(result, f"width : {round(self.width_of_line, 2)}", (10, 80),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
         
         cv2.line(road, (width//2, 0), (width//2, height), (0,100,100), 2)
         
@@ -371,6 +370,5 @@ class LaneDetector:
         cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
         #cv2.imshow("out_img", road)
-        return road, distance, degree
-
+        return road, distance, degree, curve
 
