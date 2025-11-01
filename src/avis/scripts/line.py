@@ -32,10 +32,10 @@ class LineNode(Node):
         except Exception as e:
             self.get_logger().error(f"Camera callback error: {e}")
 
-    def publish_line(self, angle, offset):
+    def publish_line(self, angle, offset, curve):
 
         msg = Float32MultiArray()
-        msg.data = [float(angle), float(offset)]
+        msg.data = [float(angle), float(offset), float(curve)]
         self.line_pub.publish(msg)
         # self.get_logger().info(f'Published line: [angle={angle:.2f}, offset={offset:.2f}]')
 
@@ -43,12 +43,12 @@ class LineNode(Node):
         t1 = time.time()
         try:
 
-            road, distance, degree = self.lane_detector.process_frame(image)
+            road, distance, degree, curve = self.lane_detector.process_frame(image)
 
             cv2.imshow("Detected Lanes", road)
             cv2.waitKey(1)
 
-            self.publish_line(degree, distance)
+            self.publish_line(degree, distance, curve)
 
         except Exception as e:
             self.get_logger().error(f"Lane detection failed: {e}")

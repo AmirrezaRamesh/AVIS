@@ -88,8 +88,9 @@ private:
 
         float offset = msg->data[0];
         float angle = msg->data[1];
+        float curve = msg->data[2]
 
-        controller(angle, offset);
+        controller(angle, offset, curve);
     }
 
     // void distance_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
@@ -107,14 +108,10 @@ private:
     // }
 
     // #############  controller block  ############
-    void controller(float angle, float offset)
+    void controller(float angle, float offset, float curve)
     {
         // constant speed  version
-<<<<<<< HEAD
         float speed = 105.0;
-=======
-        float speed = 150.0;
->>>>>>> f6bbdc10739b01f95bc001c6680ef42096ca8900
 
         float steering = stan->calculate_steer(offset, angle, speed);
         // float steering = pid.get_pid(angle, 0.02);
