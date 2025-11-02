@@ -182,13 +182,22 @@ class LaneDetector:
 
         return center_fit, center_fitx, ploty, road
     
-
     def find_lane(self, img):
 
         self.any_road = False
+        
         histogram = np.sum(img[100:, :], axis=0)
+
         midpoint = int(histogram.shape[0] // 2)
         midpoint += int(self.distance//10)
+        '''
+        Left_center = False
+        last_pixel_left = img[170:, :midpoint]
+        last_pixel_right = img[170:, midpoint:]
+        if sum[last_pixel_left] > sum[last_pixel_right]:
+            Left_center = True
+        '''
+
         Left_is_ok = True
         Right_is_ok = True
 
@@ -215,13 +224,13 @@ class LaneDetector:
             road = np.zeros((200, 500, 3), dtype=np.uint8)
             center_fit, center_fitx, ploty = 0, 0, 0
 
-        
         return center_fit, center_fitx, ploty, road, self.any_road
 
     def fit_polynomial(self, img):
         center_fit, center_fitx, ploty, road, self.any_road = self.find_lane(img)
 
-        if not self.any_road:
+        if Left_center :
+
  
             d_center = np.polyder(center_fit)
             center_y = ploty[-20:]
