@@ -48,10 +48,10 @@ public:
         10,
         std::bind(&ControlNode::line_callback, this, std::placeholders::_1));
 
-    subscription_speed_ = this->create_subscription<std_msgs::msg::Float32>(
+    subscription_get_speed_ = this->create_subscription<std_msgs::msg::Float32>(
         "/distance",
         10,
-        std::bind(&ControlNode::speed_callback, this, std::placeholders::_1)
+        std::bind(&ControlNode::get_speed_callback, this, std::placeholders::_1)
     );
 
 
@@ -138,10 +138,10 @@ private:
         controller(angle, offset, curve);
     }
 
-void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
+void get_speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
 {
     // No need to check size — it's a single float
-    speed_ = msg->data;
+    get_speed_ = msg->data;
 }
 
     // void distance_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
@@ -163,7 +163,7 @@ void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
     {
         // constant speed  version
         float speed = 105.0;
-
+        std::cout << get_speed_;
         float steering = stan->calculate_steer(offset, angle, speed);
 
         // float steering = pid.get_pid(angle, 0.02);
@@ -177,7 +177,7 @@ void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
 
     // ###### ROS Objects #######
     rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_line_;
-    rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_speed_;
+    rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_get_speed_;
 
     // rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_distance_;
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
@@ -189,7 +189,7 @@ void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
     std::unique_ptr<Longitudinal> longitudinal;
     // PID pid;
 
-    float speed_ = 0.0;
+    float get_speed_ = 0.0;
 
 };
 
