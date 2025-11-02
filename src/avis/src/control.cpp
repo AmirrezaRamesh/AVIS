@@ -48,10 +48,12 @@ public:
             10,
             std::bind(&ControlNode::line_callback, this, std::placeholders::_1));
 
-        subscription_speed_ = this->create_subscription<std_msgs::msg::Float32>(
-            "/distance",
-            10,
-            std::bind(&ControlNode::speed_callback, this, std::placeholders::_1));
+    subscription_speed_ = this->create_subscription<std_msgs::msg::Float32>(
+        "/distance",
+        10,
+        std::bind(&ControlNode::speed_callback, this, std::placeholders::_1)
+    );
+
 
         // subscription_distance_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
         //     "/distance",
@@ -134,15 +136,11 @@ private:
         controller(angle, offset, curve);
     }
 
-    void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
-    {
-        // No need to check size — it's a single float
-        float speed = msg->data;
-
-        RCLCPP_DEBUG(this->get_logger(), "Received speed: %.2f", speed);
-
-        longitudinal->get_speed(speed);
-    }
+void get_speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
+{
+    // No need to check size — it's a single float
+    get_speed_ = msg->data;
+}
 
     // void distance_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
     // {
@@ -163,7 +161,7 @@ private:
     {
         // constant speed  version
         float speed = 105.0;
-
+        std::cout << get_speed_;
         float steering = stan->calculate_steer(offset, angle, speed);
 
         stan->save_data(angle, offset, curve, speed, steering);
@@ -179,7 +177,7 @@ private:
 
     // ###### ROS Objects #######
     rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_line_;
-    rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_speed_;
+    rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_get_speed_;
 
     // rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr subscription_distance_;
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr publisher_;
@@ -189,8 +187,10 @@ private:
 
     std::unique_ptr<Stanley> stan;
     std::unique_ptr<Longitudinal> longitudinal;
-
     // PID pid;
+
+    float get_speed_ = 0.0;
+
 };
 
 int main(int argc, char *argv[])
