@@ -24,7 +24,7 @@ class LaneDetector:
 
         #edge = cv2.Canny(adaptive, 75, 200)
         
-        #cv2.imshow("thresh", thresh)
+        cv2.imshow("thresh", thresh)
         return thresh
 
 
@@ -80,9 +80,12 @@ class LaneDetector:
             print('The function failed to fit a line!')
             line_fitx = 1 * ploty ** 2 + 1 * ploty
 
+        if self.width_of_line < 250 or self.width_of_line > 350:
+            self.width_of_line = 300
+
         if check == "right":
             center_fitx = (line_fitx - (self.width_of_line/2))
-        if check == "left":
+        elif check == "left":
             center_fitx = (line_fitx + (self.width_of_line/2))
 
         center_fit = [line_fit[0], line_fit[1], line_fit[2]]
@@ -327,7 +330,7 @@ class LaneDetector:
             self.distance = distance
             self.curve = center_fit[0]
 
-        return road, self.distance, -self.degree, abs(self.curve)*1000
+        return road, self.distance, -self.degree, abs(self.curve)*100000
 
     def process_frame(self, frame):
         frame = frame[300:500, :]
@@ -370,5 +373,5 @@ class LaneDetector:
         cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
         #cv2.imshow("out_img", road)
-        return road, distance, degree, curve
+        return road, distance, degree
 

@@ -33,6 +33,7 @@ float Longitudinal::get_speed(float curvature)
     return base_speed - area * decreasment_speed;
 }
 
+// -------------------------------------------------------------------------
 float Longitudinal::set_speed(float curvature, float current_speed)
 {
     float reference_speed = get_speed(curvature);
