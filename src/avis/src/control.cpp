@@ -120,13 +120,13 @@ private:
 
     void controller(float angle, float offset, float curve)
     {
-        float real_speed = get_speed_;
-        real_speed += longitudinal->set_speed(fabs(angle),fabs(offset),fabs(curve), real_speed);
+        // float real_speed = get_speed_;
+        // real_speed += longitudinal->set_speed(fabs(angle),fabs(offset),fabs(curve), real_speed);
 
-        float speed = 2.2f * real_speed + 3.41f;
-        float steering = stan->calculate_steer(offset, angle, real_speed);
+        float speed = 2.2f * 42.0f + 3.41f;
+        float steering = stan->calculate_steer(offset, angle, 42);
 
-        stan->save_data(angle, offset, curve, real_speed, steering);
+        stan->save_data(angle, offset, curve, 42, steering);
 
         std_msgs::msg::Float32MultiArray msg;
         msg.data = {speed, steering};
