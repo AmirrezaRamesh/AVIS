@@ -1,5 +1,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float32_multi_array.hpp"
+#include "std_msgs/msg/float32.hpp"
 
 #include "pid.cpp"
 #include "stanley.h"
@@ -47,11 +48,13 @@ public:
         10,
         std::bind(&ControlNode::line_callback, this, std::placeholders::_1));
 
-    subscription_speed_ = this->create_subscription<std_msgs::msg::Float>(
+    subscription_speed_ = this->create_subscription<std_msgs::msg::Float32>(
         "/distance",
         10,
         std::bind(&ControlNode::speed_callback, this, std::placeholders::_1)
     );
+
+
     // subscription_distance_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
     //     "/distance",
     //     10,
@@ -135,15 +138,15 @@ private:
         controller(angle, offset, curve);
     }
 
-    void speed_callback(const std_msgs::msg::Float::SharedPtr msg)
-    {
-        // No need to check size — it's a single float
-        float speed = msg->data;
+void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
+{
+    // No need to check size — it's a single float
+    float speed = msg->data;
 
-        RCLCPP_DEBUG(this->get_logger(), "Received speed: %.2f", speed);
+    RCLCPP_DEBUG(this->get_logger(), "Received speed: %.2f", speed);
 
-        longitudinal->get_speed(speed);
-    }
+    longitudinal->get_speed(speed);
+}
 
     // void distance_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
     // {
