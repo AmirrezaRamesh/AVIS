@@ -1,14 +1,14 @@
 #include "longitudinal.h"
 
 // constructor
-Longitudinal::Longitudinal(const float (&area)[5], float area_bound, float base_seed, float decreasment_speed)
-    : speed_pid(0.1, 0, 0, 5, 0.02)
+Longitudinal::Longitudinal(const float (&area)[10], float area_bound, float base_seed, float decreasment_speed, float (&pid_gains)[5])
+    : speed_pid(pid_gains[0], pid_gains[1], pid_gains[2], pid_gains[3], pid_gains[4])
 {
     this->base_speed = base_seed;
     this->area_bound = area_bound;
     this->decreasment_speed = decreasment_speed;
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 10; i++)
     {
         curve_area[i] = area[i];
     }
@@ -17,7 +17,7 @@ Longitudinal::Longitudinal(const float (&area)[5], float area_bound, float base_
 // -------------------------------------------------------------------------
 int Longitudinal::determine_area(float curvature)
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 10; i++)
     {
         if (curvature > curve_area[i] - area_bound && curvature < curve_area[i] + area_bound)
         {
