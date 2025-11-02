@@ -67,7 +67,7 @@ private:
         double base_speed, decreasment_speed;
         std::vector<double> pid_gains_vec;
 
-        this->get_parameter("area_range", area_range_long);  // <--- note long
+        this->get_parameter("area_range", area_range_long);  
         this->get_parameter("average_range", average_range);
         this->get_parameter("base_speed", base_speed);
         this->get_parameter("decreasment_speed", decreasment_speed);

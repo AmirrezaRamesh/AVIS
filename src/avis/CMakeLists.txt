@@ -15,7 +15,6 @@ find_package(std_msgs REQUIRED)
 include_directories(include)
 
 
-
 add_executable(control 
               src/control.cpp
               src/stanley.cpp

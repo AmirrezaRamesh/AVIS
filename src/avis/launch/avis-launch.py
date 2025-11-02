@@ -40,8 +40,8 @@ def generate_launch_description():
 
                     'area_range': [40, 80, 120, 160, 200, 240, 280, 320, 360, 400],
                     'average_range': 20,
-                    'base_speed': 40,
-                    'decreasment_speed': 10,
+                    'base_speed': 40.0,
+                    'decreasment_speed': 10.0,
                     'pid_gains': [0.5, 0.0, 0.0, 5.0, 0.01],
                 }]
             )]

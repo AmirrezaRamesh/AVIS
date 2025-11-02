@@ -2,7 +2,7 @@
 #define LONGITUDINAL_CONTROLL
 
 #include <iostream>
-#include "pid.cpp"
+#include "pid.h"
 using namespace std;
 
 class Longitudinal
