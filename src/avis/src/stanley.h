@@ -1,7 +1,6 @@
 #ifndef STANLEY
 #define STANLEY
 
-#include <deque>
 #include <iostream>
 #include <cmath>
 #include <fstream>
@@ -17,24 +16,21 @@ private:
 
     float offset;
     float limit;
-    float prev_error;
+
     float legal_error;
-    deque<float> error_buffers;
     
 
 public:
     Stanley(const float &s, const float &d, const float &ks, const float &limit, const float &legal_error);
 
-    float radToDegree(const float &rad);
+    float radToDegree(float rad);
     float degreeToRad(const float &degree);
 
-    float set_limits(const float &input);
-    bool is_valid_error(const float &heading_error);
-    void change_handler(float &error);
+    float set_limits(float input);
     void save_data(float angle, float ofsset, float curve, float speed, float steer);
     float calculate_error(float angle,float offset,float curve);
 
-    float calculate_steer(const float &offset, float &heading_error, const float &velocity);
+    float calculate_steer(float offset, float heading_error, float velocity);
 };
 
 #endif
