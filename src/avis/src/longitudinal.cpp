@@ -1,7 +1,7 @@
 #include "longitudinal.h"
 
 // constructor
-Longitudinal::Longitudinal(const float (&area)[10], float area_bound, float base_seed, float decreasment_speed, float (&pid_gains)[5])
+Longitudinal::Longitudinal(const int (&area)[10], float area_bound, float base_seed, float decreasment_speed, float (&pid_gains)[5])
     : speed_pid(pid_gains[0], pid_gains[1], pid_gains[2], pid_gains[3], pid_gains[4])
 {
     this->base_speed = base_seed;

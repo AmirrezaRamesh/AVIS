@@ -15,10 +15,11 @@ find_package(std_msgs REQUIRED)
 include_directories(include)
 
 
-
 add_executable(control 
               src/control.cpp
-              src/stanley.cpp)
+              src/stanley.cpp
+              src/longitudinal.cpp
+              src/pid.cpp)
               
 ament_target_dependencies(control rclcpp std_msgs)
 

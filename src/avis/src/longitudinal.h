@@ -2,7 +2,7 @@
 #define LONGITUDINAL_CONTROLL
 
 #include <iostream>
-#include "pid.cpp"
+#include "pid.h"
 using namespace std;
 
 class Longitudinal
@@ -16,7 +16,7 @@ private:
     float decreasment_speed;
 
 public:
-    Longitudinal(const float (&area)[10], float area_bound, float base_speed, float decreasment_speed, float (&pid_gains)[5]);
+    Longitudinal(const int (&area)[10], float area_bound, float base_speed, float decreasment_speed, float (&pid_gains)[5]);
     int determine_area(float carvature);
     float get_speed(float curvature);
     float set_speed(float curvature, float current_speed);
