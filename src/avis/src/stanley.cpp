@@ -61,3 +61,10 @@ float Stanley::calculate_steer(const float &offset, float &heading_error, const 
     // degrees based on radian
     return set_limits((gain_steer * best_angle_error) + radToDegree(atan(offset * gain_d / (gain_ks + velocity))));
 }
+
+void Stanley::save_data(float angle, float ofsset, float curve, float speed, float steer)
+{
+    ofstream data_file("data.txt");
+
+    data_file << angle << offset << steer << curve << speed << endl;
+}
