@@ -23,6 +23,9 @@ public:
         this->declare_parameter<double>("base_speed", 0.0);
         this->declare_parameter<double>("decreasment_speed", 0.0);
         this->declare_parameter<std::vector<double>>("pid_gains", std::vector<double>(5, 0.0));
+        this->declare_parameter<double>("k_angel", 0.0);
+        this->declare_parameter<double>("k_offset", 0.0);
+        this->declare_parameter<double>("k_curve", 0.0);
 
         // ######## ROS config ########
         subscription_line_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(
@@ -66,12 +69,18 @@ private:
         int average_range;
         double base_speed, decreasment_speed;
         std::vector<double> pid_gains_vec;
+        double k_angle;
+        double k_offset;
+        double k_curve;
 
         this->get_parameter("area_range", area_range_long);  
         this->get_parameter("average_range", average_range);
         this->get_parameter("base_speed", base_speed);
         this->get_parameter("decreasment_speed", decreasment_speed);
         this->get_parameter("pid_gains", pid_gains_vec);
+        this->get_parameter("k_angel", k_angle);
+        this->get_parameter("k_offset", k_offset);
+        this->get_parameter("k_curve", k_curve);
 
         // Convert to fixed-size arrays
         int area_range[10] = {0};
@@ -83,18 +92,17 @@ private:
 
         for (size_t i = 0; i < 5 && i < pid_gains_vec.size(); ++i)
             pid_gains[i] = static_cast<float>(pid_gains_vec[i]);
-            float k_angle =10.0;
-            float k_offset =1.0;
-            float k_curve =0.1;
+
+
         longitudinal = std::make_unique<Longitudinal>(
             area_range,
             static_cast<float>(average_range),
             static_cast<float>(base_speed),
             static_cast<float>(decreasment_speed),
             pid_gains,
-            k_angle,
-            k_offset,
-            k_curve
+            static_cast<float>(k_angle),
+            static_cast<float>(k_offset),
+            static_cast<float>(k_curve)
         );
 
         RCLCPP_INFO(this->get_logger(),
