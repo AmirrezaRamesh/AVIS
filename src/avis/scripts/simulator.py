@@ -85,7 +85,7 @@ class CarPublisher(Node):
                 self.get_logger().info("Connected to simulator successfully.")
                 return
             except Exception as e:
-                self.get_logger().warn(f"Reconnect attempt {attempt+1}/{MAX_RETRIES} failed: {e}")
+                self.get_logger().warn(f"connect attempt {attempt+1}/{MAX_RETRIES} failed: {e}")
                 time.sleep(RETRY_DELAY)
 
         self.get_logger().error("Failed to reconnect to simulator after several attempts.")

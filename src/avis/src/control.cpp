@@ -48,10 +48,10 @@ public:
             10,
             std::bind(&ControlNode::line_callback, this, std::placeholders::_1));
 
-    subscription_speed_ = this->create_subscription<std_msgs::msg::Float32>(
-        "/distance",
-        10,
-        std::bind(&ControlNode::speed_callback, this, std::placeholders::_1)
+        subscription_get_speed_ = this->create_subscription<std_msgs::msg::Float32>(
+            "/distance",
+            10,
+            std::bind(&ControlNode::get_speed_callback, this, std::placeholders::_1)
     );
 
 
@@ -123,7 +123,7 @@ private:
 
     void line_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
     {
-        if (msg->data.size() < 2)
+        if (msg->data.size() < 3)
         {
             RCLCPP_WARN(this->get_logger(), "Received line data with less than 2 elements");
             return;
