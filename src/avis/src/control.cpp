@@ -141,11 +141,7 @@ private:
 void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
 {
     // No need to check size — it's a single float
-    float speed = msg->data;
-
-    RCLCPP_DEBUG(this->get_logger(), "Received speed: %.2f", speed);
-
-    longitudinal->get_speed(speed);
+    speed_ = msg->data;
 }
 
     // void distance_callback(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
@@ -191,8 +187,9 @@ void speed_callback(const std_msgs::msg::Float32::SharedPtr msg)
 
     std::unique_ptr<Stanley> stan; 
     std::unique_ptr<Longitudinal> longitudinal;
-
     // PID pid;
+
+    float speed_ = 0.0;
 
 };
 
