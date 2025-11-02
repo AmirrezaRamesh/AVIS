@@ -1,4 +1,5 @@
 #include "stanley.h"
+    ofstream data_file("data.txt");
 
 float Stanley::radToDegree(const float &rad)
 {
@@ -56,15 +57,13 @@ float Stanley::calculate_steer(const float &offset, float &heading_error, const 
 {
     float best_angle_error = heading_error;
 
-    change_handler(best_angle_error);
-    prev_error = best_angle_error;
+    // change_handler(best_angle_error);
+    // prev_error = best_angle_error;
     // degrees based on radian
     return set_limits((gain_steer * best_angle_error) + radToDegree(atan2(offset * gain_d , (gain_ks + velocity))));
 }
 
 void Stanley::save_data(float angle, float offset, float curve, float speed, float steer)
 {
-    ofstream data_file("data.txt");
-
-    data_file << angle << offset << steer << curve << speed << endl;
+    data_file << angle<<'\t' << offset<<'\t' << curve << endl;
 }
