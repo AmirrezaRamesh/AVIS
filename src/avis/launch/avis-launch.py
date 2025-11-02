@@ -43,6 +43,9 @@ def generate_launch_description():
                     'base_speed': 40.0,
                     'decreasment_speed': 1.0,
                     'pid_gains': [0.02, 0.0, 0.0, 5.0, 0.01],
+                    'k_angle': 10.0,
+                    'k_offset': 1.0,
+                    'k_curve': 0.1,
                 }]
             )]
         ),
