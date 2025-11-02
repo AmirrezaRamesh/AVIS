@@ -86,6 +86,7 @@ private:
             float k_angle =10.0;
             float k_offset =1.0;
             float k_curve =0.1;
+            
         longitudinal = std::make_unique<Longitudinal>(
             area_range,
             static_cast<float>(average_range),
