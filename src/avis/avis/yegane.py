@@ -34,8 +34,8 @@ class LaneDetector:
         leftx_base = np.argmax(histogram[:midpoint])
 
         nwindows = 10
-        minpix = 30
-        window_width = 30
+        minpix = 50
+        window_width = 80
         window_height = int(img.shape[0] // nwindows)
 
         nonzero = img.nonzero()
@@ -106,8 +106,8 @@ class LaneDetector:
 
         # Windows properties
         nwindows = 10
-        minpix = 30
-        window_width = 30
+        minpix = 50
+        window_width = 80
         window_height = int(img.shape[0] // nwindows)
 
         nonzero = img.nonzero()
@@ -153,7 +153,6 @@ class LaneDetector:
         lefty = nonzeroy[left_lane_inds]
         rightx = nonzerox[right_lane_inds]
         righty = nonzeroy[right_lane_inds]
-
         
         left_fit = np.polyfit(lefty, leftx, 2)
         right_fit = np.polyfit(righty, rightx, 2)
@@ -188,16 +187,20 @@ class LaneDetector:
 
         return center_fit, center_fitx, ploty, road
 
-    def linear_line (self, img, histogram):
+    def set_line (self, img, histogram, check, method):
+
+        
         midpoint = int(histogram.shape[0] // 2)
 
-        leftx_base = np.argmax(histogram[:midpoint])
-        rightx_base = np.argmax(histogram[midpoint:]) + midpoint
+        if check == "left":
+            leftx_base = np.argmax(histogram[:midpoint])
+        elif check == "right":
+            leftx_base = np.argmax(histogram[midpoint:]) + midpoint
 
         # Windows properties
-        nwindows = 12
+        nwindows = 10
         minpix = 50
-        window_width = 20
+        window_width = 80
         window_height = int(img.shape[0] // nwindows)
 
         nonzero = img.nonzero()
@@ -206,61 +209,56 @@ class LaneDetector:
 
         # Current positions to be updated later
         leftx_current = leftx_base
-        rightx_current = rightx_base
 
         left_lane_inds = []
-        right_lane_inds = []
-
 
         for window in range(nwindows):
             win_y_low = img.shape[0] - (window + 1) * window_height
             win_y_high = img.shape[0] - window * window_height
             win_xleft_l = leftx_current - window_width
             win_xleft_r = leftx_current + window_width
-            win_xright_l = rightx_current - window_width
-            win_xright_r = rightx_current + window_width
-
+        
             good_left_inds = ((nonzeroy >= win_y_low) & (nonzeroy < win_y_high) &
                               (nonzerox >= win_xleft_l) & (nonzerox < win_xleft_r)).nonzero()[0]
 
-            good_right_inds = ((nonzeroy >= win_y_low) & (nonzeroy < win_y_high) &
-                               (nonzerox >= win_xright_l) & (nonzerox < win_xright_r)).nonzero()[0]
-
             left_lane_inds.append(good_left_inds)
-            right_lane_inds.append(good_right_inds)
 
             if len(good_left_inds) > minpix:
                 leftx_current = int(np.mean(nonzerox[good_left_inds]))
-            if len(good_right_inds) > minpix:
-                rightx_current = int(np.mean(nonzerox[good_right_inds]))
 
         try:
             left_lane_inds = np.concatenate(left_lane_inds)
-            right_lane_inds = np.concatenate(right_lane_inds)
         except ValueError:
             pass
 
         leftx = nonzerox[left_lane_inds]
         lefty = nonzeroy[left_lane_inds]
-        rightx = nonzerox[right_lane_inds]
-        righty = nonzeroy[right_lane_inds]
 
-        
-        left_fit = np.polyfit(lefty, leftx, 1)
-        right_fit = np.polyfit(righty, rightx, 1)
-
-        width = img.shape[1]
         height = img.shape[0]
         ploty = np.linspace(0, height - 1, height)
 
-        try:
-            left_fitx = left_fit[0] * ploty + left_fit[1]
-            right_fitx = right_fit[0] * ploty + right_fit[1]
-        except TypeError:
-            print('The function failed to fit a line!')
-            left_fitx = 1 * ploty 
-            right_fitx = 1 * ploty
-            
+        if method == 1:
+            left_fit_linear = np.polyfit(lefty, leftx, 1)
+
+            left_fitx = left_fit_linear[0] * ploty + left_fit_linear[1]
+            left_fit = np.array([0, left_fit_linear[0], left_fit_linear[1]])
+       
+        elif method == 2:
+            left_fit = np.polyfit(lefty, leftx, 2)
+
+            # try:
+            left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
+            # except TypeError:
+            #     print('The function failed to fit a line!')
+            #     left_fitx = 1 * ploty ** 2 + 1 * ploty
+        
+        return left_fit, left_fitx, ploty
+    
+    def set_center_line(self, left_fit, left_fitx, right_fit, right_fitx, ploty):
+
+        width = 500
+        height = 200
+
         center_fitx = (left_fitx + right_fitx) // 2
 
         center_fit = [
@@ -278,30 +276,67 @@ class LaneDetector:
         cv2.line(road, (250,0), (250,199), (0,200,200), 2)
 
         return center_fit, center_fitx, ploty, road
+    
 
     def find_lane(self, img):
+
         self.any_road = False
-        histogram = np.sum(img[img.shape[0]//2:, :], axis=0)
-
+        histogram = np.sum(img[100:, :], axis=0)
         midpoint = int(histogram.shape[0] // 2)
+        midpoint += int(self.distance//10)
+        Left_is_ok = True
+        Right_is_ok = True
 
-        if max(histogram[:midpoint]) < 1000 and max(histogram[midpoint:]) < 1000:
+        # if max(histogram[:midpoint]) < 1000 and max(histogram[midpoint:]) < 1000:
+        #     self.any_road = True
+        #     road = np.zeros((200, 500, 3), dtype=np.uint8)
+        #     center_fit, center_fitx, ploty = 0, 0, 0
+
+        # elif max(histogram[:midpoint]) < 4000 and max(histogram[midpoint:]) > 5500: #bad left line 
+        #     left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 1)
+        #     right_fit, right_fitx, ploty = self.set_line(img, histogram, "right", 2)
+        #     center_fit, center_fitx, ploty, road = self.set_center_line(left_fit, left_fitx, right_fit, right_fitx, ploty)
+
+        # elif max(histogram[:midpoint]) > 5500 and max(histogram[midpoint:]) < 4000: #bad right line 
+        #     left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 2)
+        #     right_fit, right_fitx, ploty = self.set_line(img, histogram, "right", 1)
+        #     center_fit, center_fitx, ploty, road = self.set_center_line(left_fit, left_fitx, right_fit, right_fitx, ploty)
+
+        # elif max(histogram[:midpoint]) < 4000 : # no left line
+        #     center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "right")
+        
+        # elif max(histogram[midpoint:]) < 4000 : # no right line
+        #     center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "left")
+        
+        # else:
+        #     left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 2)
+        #     right_fit, right_fitx, ploty = self.set_line(img, histogram, "right", 2)
+        #     center_fit, center_fitx, ploty, road = self.set_center_line(left_fit, left_fitx, right_fit, right_fitx, ploty)
+        #     #center_fit, center_fitx, ploty, road = self.double_line(img, histogram)
+        if(max(histogram[:midpoint])>7000):
+            left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 2)
+        elif(max(histogram[:midpoint])>5000):
+            left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 1)
+        else:
+            Left_is_ok = False
+        if(max(histogram[midpoint:])>3000):
+            right_fit, right_fitx, ploty = self.set_line(img, histogram, "right", 2)
+        elif(max(histogram[midpoint:])>2000):
+            right_fit, right_fitx, ploty = self.set_line(img, histogram, "right", 1)
+        else:
+            Right_is_ok = False
+        if Right_is_ok and Left_is_ok:
+            center_fit, center_fitx, ploty, road = self.set_center_line(left_fit, left_fitx, right_fit, right_fitx, ploty)
+        elif not Right_is_ok and Left_is_ok:
+            center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "right")
+        elif not Left_is_ok and Right_is_ok:
+            center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "left")
+        else:
             self.any_road = True
             road = np.zeros((200, 500, 3), dtype=np.uint8)
             center_fit, center_fitx, ploty = 0, 0, 0
 
-        elif max(histogram[:midpoint]) < 2000 and max(histogram[midpoint:]) < 2000:  
-            center_fit, center_fitx, ploty, road = self.linear_line(img, histogram)
-
-        elif max(histogram[:midpoint]) < 4000 : # no left line
-            center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "right")
         
-        elif max(histogram[midpoint:]) < 4000 : # no right line
-            center_fit, center_fitx, ploty, road = self.single_line(img, histogram, "left")
-        
-        else:
-            center_fit, center_fitx, ploty, road = self.double_line(img, histogram)
-
         return center_fit, center_fitx, ploty, road, self.any_road
 
     def fit_polynomial(self, img):
@@ -373,5 +408,5 @@ class LaneDetector:
         cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
         #cv2.imshow("out_img", road)
-        return road, distance, degree
+        return road, distance, degree, curve
 
