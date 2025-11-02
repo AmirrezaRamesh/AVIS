@@ -4,6 +4,7 @@
 #include <deque>
 #include <iostream>
 #include <cmath>
+#include <fstream>
 
 using namespace std;
 
@@ -29,6 +30,7 @@ public:
     float set_limits(const float &input);
     bool is_valid_error(const float &heading_error);
     void change_handler(float &error);
+    void save_data(float angle, float ofsset, float curve, float speed, float steer);
 
     float calculate_steer(const float &offset, float &heading_error, const float &velocity);
 };
