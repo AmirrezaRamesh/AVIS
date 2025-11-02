@@ -38,11 +38,11 @@ def generate_launch_description():
                     'steer_limit': 70.0,
                     'legal_error': 100.0,
 
-                    'area_range': [10, 12, 15, 18, 22, 30, 40, 45, 50, 55],
-                    'average_range': 5,
-                    'base_speed': 120.0,
-                    'decreasment_speed': 10.5,
-                    'pid_gains': [0.5, 0.1, 0.05, 0.0, 0.0],
+                    'area_range': [40, 80, 120, 160, 200, 240, 280, 320, 360, 400],
+                    'average_range': 20,
+                    'base_speed': 40,
+                    'decreasment_speed': 10,
+                    'pid_gains': [0.5, 0.0, 0.0, 5.0, 0.01],
                 }]
             )]
         ),
