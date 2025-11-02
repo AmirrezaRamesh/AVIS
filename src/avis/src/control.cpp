@@ -77,18 +77,25 @@ private:
         int area_range[10] = {0};
         float pid_gains[5] = {0.0f};
 
+        // add k_angle k_offset k_curve
         for (size_t i = 0; i < 10 && i < area_range_long.size(); ++i)
             area_range[i] = static_cast<int>(area_range_long[i]);  // convert long → int
 
         for (size_t i = 0; i < 5 && i < pid_gains_vec.size(); ++i)
             pid_gains[i] = static_cast<float>(pid_gains_vec[i]);
-
+            float k_angle =10.0;
+            float k_offset =1.0;
+            float k_curve =0.1;
         longitudinal = std::make_unique<Longitudinal>(
             area_range,
             static_cast<float>(average_range),
             static_cast<float>(base_speed),
             static_cast<float>(decreasment_speed),
-            pid_gains);
+            pid_gains,
+            k_angle,
+            k_offset,
+            k_curve
+        );
 
         RCLCPP_INFO(this->get_logger(),
                     "Stanley initialized. Longitudinal initialized.");
@@ -114,7 +121,7 @@ private:
     void controller(float angle, float offset, float curve)
     {
         float real_speed = get_speed_;
-        real_speed += longitudinal->set_speed(curve, real_speed);
+        real_speed += longitudinal->set_speed(fabs(angle),fabs(offset),fabs(curve), real_speed);
 
         float speed = 2.2f * real_speed + 3.41f;
         float steering = stan->calculate_steer(offset, angle, real_speed);
