@@ -16,6 +16,7 @@ class CarPublisher(Node):
         # self.sensor_pub = self.create_publisher(Float32MultiArray, '/distance', 10)
         self.camera_pub = self.create_publisher(Image, '/camera', 10)
         self.create_subscription(Float32MultiArray, '/actuate', self.actuate_callback, 10)
+        self.speed_pub = self.create_publisher(float, '/speed', 10)
 
         self.bridge = CvBridge()
         self.speed = 0.0
@@ -33,7 +34,7 @@ class CarPublisher(Node):
     def actuate_callback(self, msg: Float32MultiArray):
         if len(msg.data) >= 2:
             self.speed, self.steering = msg.data[:2]
-
+            
             self.car.setSpeed(self.speed)
             self.car.setSteering(self.steering)
 
@@ -51,6 +52,7 @@ class CarPublisher(Node):
             # sensors = self.car.getSensors()  # [Left, Middle, Right]
             # self.car.setSensorAngle(40)
             self.current_speed = self.car.getSpeed()
+            self.speed_pub.publish(self.current_speed)
             # Publish sensor data
             # sensor_msg = Float32MultiArray(data=[float(s) for s in sensors])
             # self.sensor_pub.publish(sensor_msg)
