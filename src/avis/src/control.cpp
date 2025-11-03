@@ -131,8 +131,8 @@ private:
         // float real_speed = get_speed_;
         // real_speed += longitudinal->set_speed(fabs(angle),fabs(offset),fabs(curve), real_speed);
 
-        float speed = 2.2f * 42.0f + 3.41f;
-        float steering = stan->calculate_steer(offset, angle, 42); // offset angle speed
+        float speed = 2.2f * 40.0f + 3.41f;
+        float steering = stan->calculate_steer(offset, angle, get_speed_); // offset angle speed
 
         stan->save_data(angle, offset, curve, 42, steering);
 

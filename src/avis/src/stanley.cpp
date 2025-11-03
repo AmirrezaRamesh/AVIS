@@ -33,10 +33,10 @@ float Stanley::set_limits(float input)
 float Stanley::calculate_steer(float offset, float heading_error, float velocity)
 {
     // degrees based on radian
-    return set_limits((gain_steer * heading_error) + radToDegree(-atan(offset * gain_d / (gain_ks + velocity))));
+    return set_limits((gain_steer * heading_error) + radToDegree(atan(offset * gain_d / (gain_ks + velocity))));
 }
 
 void Stanley::save_data(float angle, float offset, float curve, float speed, float steer)
 {
-    data_file << angle<<'\t' << offset<<'\t' <<"                    "<<steer<< endl;
+    data_file << angle<<"        " << offset<<'\t' <<"                    "<<steer<< endl;
 }
