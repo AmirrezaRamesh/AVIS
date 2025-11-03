@@ -20,7 +20,7 @@ class LaneDetector:
 
         #edge = cv2.Canny(adaptive, 75, 200)
         
-        cv2.imshow("thresh", thresh)
+        #cv2.imshow("thresh", thresh)
         return thresh
 
 
@@ -191,7 +191,7 @@ class LaneDetector:
 
         if(max(histogram[:midpoint])>7000):
             left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 2)
-        elif(max(histogram[:midpoint])>5000):
+        elif(max(histogram[:midpoint])>6000):
             left_fit, left_fitx, ploty = self.set_line(img, histogram, "left", 1)
         else:
             Left_is_ok = False
@@ -279,8 +279,7 @@ class LaneDetector:
         for pt in src_points.astype(int):
             cv2.circle(result, tuple(pt), 3, color=(0, 0, 255), thickness=-1)
 
-        cv2.imshow("road", road_on_warped)
+        #cv2.imshow("road", road_on_warped)
         cv2.imshow("result", result)
-        #cv2.imshow("out_img", road)
         return road, distance, degree, curve
 
