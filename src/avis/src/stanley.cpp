@@ -38,5 +38,5 @@ float Stanley::calculate_steer(float offset, float heading_error, float velocity
 
 void Stanley::save_data(float angle, float offset, float curve, float speed, float steer)
 {
-    data_file << angle<<"        " << offset<<'\t' <<"                    "<<steer<< endl;
+    data_file << angle<<"        " << offset<<'\t' <<"                    "<<steer<<"      "<<speed<< endl;
 }

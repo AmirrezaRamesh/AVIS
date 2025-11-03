@@ -32,10 +32,10 @@ def generate_launch_description():
                 output='log',
                 respawn=True,
                 parameters=[{
-                    'gain_yaw': 0.844,
+                    'gain_yaw': 0.8,
                     'gain_crosstack_error': 0.28,
-                    'gain_ks': 0.05,
-                    'steer_limit': 90.0,
+                    'gain_ks': 0.1,
+                    'steer_limit': 100.0,
                     'legal_error': 100.0,
 
                     'area_range': [40, 80, 120, 160, 200, 240, 280, 320, 360, 400],

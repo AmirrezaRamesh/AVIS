@@ -134,7 +134,7 @@ private:
         float speed = 2.2f * 40.0f + 3.41f;
         float steering = stan->calculate_steer(offset, angle, get_speed_); // offset angle speed
 
-        stan->save_data(angle, offset, curve, 42, steering);
+        stan->save_data(angle, offset, curve, get_speed_, steering);
 
         std_msgs::msg::Float32MultiArray msg;
         msg.data = {speed, steering};
