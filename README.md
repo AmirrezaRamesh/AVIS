@@ -4,7 +4,7 @@
 1. download the AVIS 1.2.4 from [their website](https://www.avisengine.com) and run the simulator
 2. start the server from the panel.
 3. clone our project and `cd` inside it, then build it using `colcon build` and also source it using `source ./install/setup.bash`
-4. run the command `ros2 launch avis avis-launch.py`
+4. run the command `ros2 launch avis avis-launch.py`. \
 P.S. : ROS2 version is `humble`, `OpenCV` and `numpy` are also  prerequisites of the project.
 
 ### about the project
