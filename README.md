@@ -15,6 +15,6 @@ this was a task from auriga robotics team with a deadline of a week. no further 
 ### contributors
 - Yegane Rahmati : line detection
 - Shayan Setayandeh : control algorithms
-- Amirreza Ramesh : ros system
+- Amirreza Ramesh : ros implementation
 
 
